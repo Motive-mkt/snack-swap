@@ -37,7 +37,7 @@ const MACROS = [
 function Card({ r, index }: { r: Recipe; index: number }) {
   return (
     <article
-      className="card-in group flex flex-col overflow-hidden rounded-3xl border border-line bg-paper-2 transition-shadow duration-300 hover:shadow-[0_24px_50px_-30px_rgb(43_29_20/0.55)]"
+      className="card-in group flex flex-col overflow-hidden sticker !rounded-3xl transition-[transform,box-shadow] duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[9px_9px_0_var(--ink)]"
       style={{ animationDelay: `${Math.min(index, 8) * 30}ms` }}
     >
       <div className="relative aspect-[4/3] bg-paper-3">

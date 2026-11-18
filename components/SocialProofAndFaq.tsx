@@ -55,7 +55,7 @@ export function SocialProof() {
           </ul>
         ) : (
           <div className="mt-10 grid gap-5 lg:grid-cols-[1.15fr_0.85fr]">
-            <div className="rounded-3xl border border-line bg-paper-2 p-6 sm:p-8">
+            <div className="sticker !rounded-3xl p-6 sm:p-8">
               <div className="flex items-center gap-2 text-sage">
                 <ClipboardCheck className="size-5" aria-hidden />
                 <h3 className="font-sans text-sm font-semibold uppercase tracking-[0.14em]">Counted from the recipe pages</h3>
@@ -74,7 +74,7 @@ export function SocialProof() {
               </p>
             </div>
 
-            <div className="rounded-3xl border border-line bg-paper-2 p-6 sm:p-8">
+            <div className="sticker !rounded-3xl p-6 sm:p-8">
               <div className="flex items-center gap-2 text-sage">
                 <Wrench className="size-5" aria-hidden />
                 <h3 className="font-sans text-sm font-semibold uppercase tracking-[0.14em]">Honest kitchen-equipment check</h3>

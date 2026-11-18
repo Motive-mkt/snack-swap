@@ -45,14 +45,14 @@ export function CheckoutSection() {
   }
 
   return (
-    <section id="checkout" aria-labelledby="checkout-h" className="bg-paper-3/60 py-20 lg:py-28">
+    <section id="checkout" aria-labelledby="checkout-h" className="border-y-[3px] border-ink bg-butter py-20 lg:py-28">
       <div className="wrap">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">One-time purchase</p>
           <h2 id="checkout-h" className="mt-3 text-[clamp(2.2rem,5vw,3.6rem)]">Get the Playbook</h2>
         </div>
 
-        <div className="mx-auto mt-10 grid max-w-5xl overflow-hidden rounded-[2rem] border border-line bg-paper-2 shadow-[0_40px_80px_-40px_rgb(43_29_20/0.5)] lg:grid-cols-[1fr_1fr]">
+        <div className="mx-auto mt-10 grid max-w-5xl overflow-hidden rounded-[2rem] border-[3px] border-ink bg-paper-2 shadow-[10px_10px_0_var(--ink)] lg:grid-cols-[1fr_1fr]">
           {/* Offer */}
           <div className="border-b border-line p-7 sm:p-9 lg:border-b-0 lg:border-r">
             <div className="flex items-start gap-5">

@@ -8,19 +8,23 @@
   tabular numerals for data, 4/8 spacing rhythm, reduced-motion respected.
 */
 :root {
-  --paper: #f4efe3;
-  --paper-2: #fbf8f1;
-  --paper-3: #ebe3d2;
-  --ink: #2b1d14;
-  --ink-2: #5e4e41;
-  --line: #ddd3bf;
-  --paprika: #b23e1b;
-  --paprika-deep: #8f2f12;
-  --berry: #9b2c3f;
-  --sage: #4f6a47;
-  --sage-soft: #dde5d4;
-  --amber: #d98a2b;
-  --espresso: #1f140d;
+  --paper: #fff3dc;
+  --paper-2: #fffaee;
+  --paper-3: #ffe3a3;
+  --ink: #1e0b2b;
+  --ink-2: #4a3a57;
+  --line: #1e0b2b;
+  --paprika: #d23a0c;
+  --paprika-deep: #a82a05;
+  --tomato: #ff5a2b;
+  --butter: #ffd84d;
+  --mint: #b8f0cf;
+  --blush: #ffc4d2;
+  --berry: #b0214f;
+  --sage: #1f6b4a;
+  --sage-soft: #d6f3e2;
+  --amber: #ffc933;
+  --espresso: #1e0b2b;
 }
 
 @theme inline {
@@ -47,8 +51,12 @@
   --color-sage-soft: var(--sage-soft);
   --color-amber: var(--amber);
   --color-espresso: var(--espresso);
+  --color-tomato: var(--tomato);
+  --color-butter: var(--butter);
+  --color-mint: var(--mint);
+  --color-blush: var(--blush);
 
-  --font-display: "Cormorant Garamond Variable", "Cormorant Garamond", Georgia, serif;
+  --font-display: "Bricolage Grotesque Variable", "Bricolage Grotesque", system-ui, sans-serif;
   --font-sans: "Inter Variable", Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
 
   --animate-accordion-down: accordion-down 0.22s ease-out;
@@ -65,7 +73,6 @@
 }
 
 html {
-  scroll-behavior: smooth;
   scroll-padding-top: 76px;
   -webkit-text-size-adjust: 100%;
 }
@@ -91,10 +98,11 @@ body {
 
 h1, h2, h3, .font-display {
   font-family: var(--font-display);
-  font-weight: 500;
-  letter-spacing: -0.01em;
-  line-height: 1.04;
+  font-weight: 800;
+  letter-spacing: -0.035em;
+  line-height: 0.96;
 }
+h1, h2 { text-transform: lowercase; }
 
 h1, h2 { text-wrap: balance; }
 
@@ -104,9 +112,9 @@ h1, h2 { text-wrap: balance; }
 @media (min-width: 640px) { .wrap { padding-inline: 32px; } }
 
 .eyebrow {
-  font-size: 0.75rem;
-  font-weight: 600;
-  letter-spacing: 0.16em;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
   color: var(--sage);
 }
@@ -119,29 +127,44 @@ h1, h2 { text-wrap: balance; }
 
 button, [role="tab"], a, summary { touch-action: manipulation; }
 
-.btn-primary {
+.btn-primary, .btn-ghost {
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  min-height: 48px; padding: 0 1.5rem; border-radius: 999px;
-  background: var(--paprika); color: #fff; font-weight: 600; font-size: 1rem;
-  box-shadow: 0 1px 0 rgb(255 255 255 / 0.25) inset, 0 8px 20px -10px rgb(178 62 27 / 0.7);
-  transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 52px; padding: 0 1.6rem; border-radius: 999px;
+  border: 2.5px solid var(--ink); color: var(--ink); font-weight: 700; font-size: 1rem;
+  box-shadow: 4px 4px 0 var(--ink);
+  transition: transform 0.18s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.18s cubic-bezier(0.22, 1, 0.36, 1), background-color 0.2s ease;
   cursor: pointer;
 }
-.btn-primary:hover { background: var(--paprika-deep); }
-.btn-primary:active { transform: scale(0.98); }
+.btn-primary { background: var(--tomato); }
+.btn-ghost { background: var(--paper-2); }
+.btn-primary:hover, .btn-ghost:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+.btn-primary:active, .btn-ghost:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
 .btn-primary:disabled { opacity: 0.55; cursor: not-allowed; }
 
-.btn-ghost {
-  display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
-  min-height: 48px; padding: 0 1.4rem; border-radius: 999px;
-  border: 1.5px solid var(--ink); color: var(--ink); font-weight: 600;
-  background: transparent; transition: background-color 0.2s ease, color 0.2s ease;
-  cursor: pointer;
+.sticker {
+  border: 3px solid var(--ink);
+  border-radius: 1.5rem;
+  box-shadow: 6px 6px 0 var(--ink);
+  background: var(--paper-2);
 }
-.btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+@keyframes marquee { to { transform: translateX(-50%); } }
+.marquee-track { display: flex; width: max-content; animation: marquee var(--marquee-d, 40s) linear infinite; }
+@keyframes spin-slow { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin-slow 18s linear infinite; }
+
+.cursor-ring {
+  position: fixed; left: 0; top: 0; z-index: 9999; pointer-events: none;
+  width: 38px; height: 38px; margin: -19px 0 0 -19px; border-radius: 999px;
+  border: 2px solid var(--ink); background: rgb(255 90 43 / 0);
+  mix-blend-mode: multiply; opacity: 0;
+  transition: width .25s, height .25s, margin .25s, background-color .25s, opacity .25s;
+}
+.cursor-ring.is-on { opacity: 1; }
+.cursor-ring.is-hot { width: 70px; height: 70px; margin: -35px 0 0 -35px; background: rgb(255 90 43 / 0.35); }
 
 .paper-grain {
-  background-image: radial-gradient(rgb(43 29 20 / 0.035) 1px, transparent 1px);
+  background-image: radial-gradient(rgb(30 11 43 / 0.05) 1px, transparent 1px);
   background-size: 5px 5px;
 }
 

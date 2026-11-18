@@ -1,7 +1,8 @@
 import type { Metadata, Viewport } from "next";
 import "@fontsource-variable/inter";
-import "@fontsource-variable/cormorant-garamond";
+import "@fontsource-variable/bricolage-grotesque";
 import "./globals.css";
+import { SmoothMotion } from "@/components/SmoothMotion";
 import { SupportProvider } from "@/components/SupportProvider";
 
 const siteUrl = process.env.APP_URL ?? "http://localhost:3000";
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  themeColor: "#f4efe3",
+  themeColor: "#ffd84d",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
@@ -37,6 +38,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
+        <SmoothMotion />
         <SupportProvider>{children}</SupportProvider>
       </body>
     </html>

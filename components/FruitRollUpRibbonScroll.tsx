@@ -108,7 +108,7 @@ function Fruit({ p, f, i }: { p: MotionValue<number>; f: (typeof FRUITS)[number]
         textAnchor="middle"
         fontSize="13"
         fontWeight="600"
-        fill="#2B1D14"
+        fill="#1E0B2B"
         className="max-sm:hidden"
         style={{ opacity: labelOpacity }}
       >
@@ -124,8 +124,8 @@ function Shears({ p }: { p: MotionValue<number> }) {
   return (
     <motion.g style={{ opacity, rotate: rot, transformBox: "fill-box", transformOrigin: "center" }}>
       <g transform="translate(262 770)">
-        <path d="M0 0 L40 -26" stroke="#2B1D14" strokeWidth="5" strokeLinecap="round" />
-        <path d="M0 -22 L40 4" stroke="#2B1D14" strokeWidth="5" strokeLinecap="round" />
+        <path d="M0 0 L40 -26" stroke="#1E0B2B" strokeWidth="5" strokeLinecap="round" />
+        <path d="M0 -22 L40 4" stroke="#1E0B2B" strokeWidth="5" strokeLinecap="round" />
         <circle cx="-8" cy="-2" r="9" fill="none" stroke="#B23E1B" strokeWidth="4" />
         <circle cx="-8" cy="-22" r="9" fill="none" stroke="#B23E1B" strokeWidth="4" />
       </g>
@@ -201,8 +201,8 @@ function Canvas({ p, ribbon }: { p: MotionValue<number>; ribbon: MotionValue<num
 function Card({ m, i, lit, side }: { m: (typeof MILESTONES)[number]; i: number; lit: boolean; side: "l" | "r" }) {
   return (
     <div
-      className={`w-[min(300px,100%)] rounded-2xl border bg-paper-2 p-4 transition-all duration-300 ${
-        lit ? "border-berry/50 opacity-100 shadow-[0_18px_40px_-24px_rgb(155_44_63/0.6)]" : "border-line opacity-45"
+      className={`w-[min(300px,100%)] rounded-2xl border-2 bg-paper-2 p-4 transition-all duration-300 ${
+        lit ? "border-ink opacity-100 shadow-[5px_5px_0_var(--ink)]" : "border-ink/40 opacity-50"
       } ${side === "l" ? "text-right" : ""}`}
     >
       <p className="num text-xs font-semibold text-berry">0{i + 1}</p>
@@ -274,7 +274,7 @@ export function FruitRollUpRibbonScroll() {
   }
 
   return (
-    <section aria-labelledby="fruit-h" className="relative bg-paper-3/50">
+    <section aria-labelledby="fruit-h" className="relative bg-mint">
       <div ref={ref} className="relative h-[220vh]">
         <div className="sticky top-16 flex h-[calc(100dvh-4rem)] min-h-[520px] flex-col overflow-x-clip pt-5 sm:pt-7">
           <div id="fruit-h" className="wrap w-full">{Header}</div>

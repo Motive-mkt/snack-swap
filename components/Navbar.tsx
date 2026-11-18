@@ -18,7 +18,7 @@ export function Navbar() {
     <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur-md">
       <div className="wrap flex h-16 items-center justify-between gap-4">
         <a href="#top" className="flex items-baseline gap-2" aria-label="Snack Swap by Bite — home">
-          <span className="whitespace-nowrap font-display text-[1.5rem] font-semibold leading-none tracking-tight sm:text-[1.65rem]">Snack Swap</span>
+          <span className="whitespace-nowrap font-display text-[1.3rem] font-extrabold lowercase leading-none tracking-[-0.04em] sm:text-[1.65rem]">snack swap</span>
           <span className="hidden rounded-sm bg-ink px-1.5 py-0.5 sm:inline text-[0.62rem] font-bold uppercase tracking-[0.18em] text-paper">
             Bite
           </span>
@@ -44,8 +44,8 @@ export function Navbar() {
         </nav>
 
         <div className="flex items-center gap-2">
-          <a href="#checkout" className="btn-primary !min-h-11 whitespace-nowrap !px-4 text-[0.9rem] sm:!px-5 sm:text-[0.95rem]">
-            Get the Playbook
+          <a href="#checkout" className="btn-primary !min-h-11 whitespace-nowrap !px-3.5 text-[0.85rem] !shadow-[3px_3px_0_var(--ink)] sm:!px-5 sm:text-[0.95rem]">
+            get the playbook
           </a>
           <button
             type="button"

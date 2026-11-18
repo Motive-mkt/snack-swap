@@ -158,14 +158,14 @@ function Scene({ p }: { p: MotionValue<number> }) {
           <stop offset="100%" stopColor="#E0782F" stopOpacity="0" />
         </radialGradient>
       </defs>
-      <rect x="0" y="0" width="640" height="420" rx="28" fill="#FBF8F1" />
+      <rect x="0" y="0" width="640" height="420" rx="28" fill="#FFD84D" />
       <motion.rect x="0" y="0" width="640" height="420" rx="28" fill="url(#ovenGlow)" style={{ opacity: glow }} />
 
       {/* whole potatoes */}
       <Potato p={p} x={238} y={218} rot={-14} s={1} />
       <Potato p={p} x={338} y={246} rot={8} s={1.04} />
       <Potato p={p} x={420} y={196} rot={22} s={0.92} />
-      <motion.text x="320" y="78" textAnchor="middle" fontSize="24" fontWeight="600" fill="#2B1D14" style={{ opacity: weightOpacity }}>
+      <motion.text x="320" y="78" textAnchor="middle" fontSize="24" fontWeight="600" fill="#1E0B2B" style={{ opacity: weightOpacity }}>
         500 g russets · scrubbed, skin on
       </motion.text>
 
@@ -179,9 +179,9 @@ function Scene({ p }: { p: MotionValue<number> }) {
 
       {/* mandoline hairline */}
       <motion.g style={{ opacity: mandolineOpacity, y: mandolineY }}>
-        <line x1="28" x2="612" y1="0" y2="0" stroke="#2B1D14" strokeWidth="1.2" />
-        <rect x="28" y="-4" width="26" height="8" rx="2" fill="#2B1D14" />
-        <rect x="586" y="-4" width="26" height="8" rx="2" fill="#2B1D14" />
+        <line x1="28" x2="612" y1="0" y2="0" stroke="#1E0B2B" strokeWidth="1.2" />
+        <rect x="28" y="-4" width="26" height="8" rx="2" fill="#1E0B2B" />
+        <rect x="586" y="-4" width="26" height="8" rx="2" fill="#1E0B2B" />
       </motion.g>
 
       {/* oil + salt */}
@@ -204,11 +204,11 @@ function Scene({ p }: { p: MotionValue<number> }) {
         <path
           d="M214 296 Q214 380 320 380 Q426 380 426 296 Z"
           fill="#FBF8F1"
-          stroke="#2B1D14"
+          stroke="#1E0B2B"
           strokeWidth="2.5"
           strokeLinejoin="round"
         />
-        <path d="M214 296 Q320 314 426 296" fill="none" stroke="#2B1D14" strokeWidth="2" opacity="0.5" />
+        <path d="M214 296 Q320 314 426 296" fill="none" stroke="#1E0B2B" strokeWidth="2" opacity="0.5" />
       </motion.g>
     </svg>
   );
@@ -242,7 +242,7 @@ export function PotatoToChipScroll() {
 
   if (reduce) {
     return (
-      <section aria-labelledby="potato-h" className="wrap py-16 lg:py-24">
+      <section aria-labelledby="potato-h" className="bg-blush"><div className="wrap py-16 lg:py-24">
         <p className="eyebrow">Recipe 02 · Crunchy &amp; Salty</p>
         <h2 id="potato-h" className="mt-3 text-[clamp(2.1rem,5vw,3.4rem)]">From three potatoes to a real snap</h2>
         <div className="mt-8 grid items-center gap-8 lg:grid-cols-2">
@@ -262,12 +262,12 @@ export function PotatoToChipScroll() {
         <p className="num mt-5 text-sm text-ink-2">
           {macros.map(([v, u]) => `${v} ${u}`).join(" · ")} — Direct-format alternative, inspired by Lay&apos;s Classic (not affiliated).
         </p>
-      </section>
+      </div></section>
     );
   }
 
   return (
-    <section aria-labelledby="potato-h" className="relative">
+    <section aria-labelledby="potato-h" className="relative bg-blush">
       <div ref={ref} className="relative h-[260vh]">
         <div className="sticky top-16 flex h-[calc(100dvh-4rem)] min-h-[520px] items-center overflow-x-clip">
           <div className="wrap w-full">
@@ -317,7 +317,7 @@ export function PotatoToChipScroll() {
                   Direct-format alternative — inspired by Lay&apos;s Classic (not affiliated)
                 </motion.p>
               </div>
-              <div className="order-1 aspect-[640/420] max-h-[48dvh] w-full justify-self-center overflow-hidden rounded-[28px] border border-line shadow-[0_30px_60px_-34px_rgb(43_29_20/0.5)] lg:order-2 lg:max-h-[62dvh]">
+              <div className="order-1 aspect-[640/420] max-h-[48dvh] w-full justify-self-center overflow-hidden rounded-[28px] border-[3px] border-ink shadow-[8px_8px_0_var(--ink)] lg:order-2 lg:max-h-[62dvh]">
                 <Scene p={p} />
               </div>
             </div>
