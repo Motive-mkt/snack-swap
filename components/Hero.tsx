@@ -58,7 +58,7 @@ export function Hero() {
     `${STATS.total} recipes`,
     `${STATS.zeroSugar} with 0 g added sugar`,
     `${STATS.quickPrep} ≤20 min active prep`,
-    "no whop account needed",
+    "instant access after payment",
   ];
 
   return (
@@ -98,7 +98,7 @@ export function Hero() {
             </a>
           </div>
           <ul data-hero-fade className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.84rem] font-bold text-ink" aria-label="Why buy here">
-            {["Instant PDF download", "Secure checkout by Whop", "No account needed"].map((t) => (
+            {["Instant access", "Secure checkout by Whop", "Yours to keep"].map((t) => (
               <li key={t} className="flex items-center gap-1.5">
                 <span aria-hidden className="grid size-4 place-items-center rounded-full bg-ink text-[0.6rem] leading-none text-butter">✓</span>
                 {t}

@@ -15,7 +15,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Snack Swap Playbook by Bite",
     description:
-      "40 craving-led kitchen swaps with gram-accurate macros. Buy without a Whop account — instant PDF download.",
+      "40 craving-led kitchen swaps with gram-accurate macros. Instant access to the PDF after payment.",
     images: [{ url: "/og.jpg", width: 1200, height: 630 }],
     type: "website",
   },

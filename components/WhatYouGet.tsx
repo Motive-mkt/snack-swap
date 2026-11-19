@@ -29,7 +29,7 @@ export function WhatYouGet() {
           <a href="#checkout" className="btn-primary !min-h-14 text-[1.05rem]">
             get your snack swap{SITE.price ? ` · ${SITE.price}` : ""}
           </a>
-          <p className="text-sm font-medium text-ink-2">Instant PDF download · secure checkout by Whop · no account needed</p>
+          <p className="text-sm font-medium text-ink-2">Instant access after payment · secure checkout by Whop</p>
         </div>
       </div>
     </section>

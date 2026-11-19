@@ -4,7 +4,7 @@ import { CheckCircle2, Download, Loader2, TriangleAlert } from "lucide-react";
 import { AutoRefresh } from "@/components/AutoRefresh";
 import { ResendForm } from "@/components/ResendForm";
 import { downloadUrlFor } from "@/lib/email";
-import { whopAccessUrl } from "@/lib/env";
+import { whopAccessUrl, whopMode } from "@/lib/env";
 import { orders } from "@/lib/orders";
 import { whop } from "@/lib/whop";
 
@@ -43,6 +43,29 @@ export default async function ThankYou({ searchParams }: { searchParams: SP }) {
   const sp = await searchParams;
   const orderId = sp.orderId;
   const paymentId = sp.payment ?? sp.payment_id;
+
+  if (whopMode()) {
+    // Whop-library delivery: the redirect only happens after a successful payment.
+    const url = whopAccessUrl();
+    return (
+      <main id="main" className="wrap flex min-h-dvh max-w-2xl flex-col justify-center py-16">
+        <Link href="/" className="font-display text-2xl font-semibold">Snack Swap <span className="text-sm text-ink-2">by Bite</span></Link>
+        <div className="mt-8 rounded-3xl border border-line bg-paper-2 p-7 sm:p-9">
+          <CheckCircle2 className="size-9 text-sage" aria-hidden />
+          <h1 className="mt-4 text-[2.5rem]">Thank you, your swaps are ready</h1>
+          <p className="mt-3 text-ink-2">
+            Open your Whop library to download the PDF. Sign in to Whop with the <strong className="text-ink">same email you used at checkout</strong> (Whop will send you a quick sign-in link). Your receipt is in that inbox too.
+          </p>
+          {url && (
+            <a href={url} className="btn-primary mt-6 w-full sm:w-auto" target="_blank" rel="noopener noreferrer">
+              <Download className="size-5" aria-hidden /> Open my Snack Swap
+            </a>
+          )}
+          <p className="mt-4 text-xs text-ink-2">Can&apos;t find it? Check spam for the Whop email, or use the support button on the site and include your checkout email.</p>
+        </div>
+      </main>
+    );
+  }
 
   const { order, failed } = orderId ? await resolveOrder(orderId, paymentId) : { order: null, failed: false };
   const paid = order?.status === "paid";

@@ -6,7 +6,6 @@ import { loadWhop } from "@whop/elements";
 import { Chat, ChatElement, WhopElements } from "@whop/elements-react";
 import { LifeBuoy, LogOut, X } from "lucide-react";
 import { SITE } from "@/data/site";
-import { ResendForm } from "./ResendForm";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "./ui/accordion";
 
 type Creds = { accessToken: string; channelId: string; accountId: string; environment: "production" | "sandbox"; name?: string };
@@ -24,8 +23,8 @@ function LiveChat({ c }: { c: Creds }) {
 
 const QUICK = [
   {
-    q: "I lost my download link",
-    a: <ResendForm compact />,
+    q: "I can't find my PDF",
+    a: <p>Open your Whop library and sign in with the same email you used at checkout. Whop will email you a sign-in link. Still stuck? Check spam, then message us below with your checkout email.</p>,
   },
   {
     q: "I don't have a kitchen scale",
@@ -90,7 +89,7 @@ export default function SupportChatModal({ open, onOpenChange, error }: { open: 
             </Dialog.Close>
           </div>
           <Dialog.Description id="support-desc" className="mt-2 text-sm text-ink-2">
-            Most questions are answered right here. You never need a Whop account to buy or download.
+            Most questions are answered right here. Your PDF lives in your Whop library.
           </Dialog.Description>
 
           <Accordion type="single" collapsible className="mt-5 border-t border-border">
@@ -103,7 +102,7 @@ export default function SupportChatModal({ open, onOpenChange, error }: { open: 
           </Accordion>
 
           <div className="mt-6 rounded-2xl bg-paper-3 p-4 text-sm leading-relaxed">
-            <strong>Checkout requires zero Whop account.</strong> To message us directly inside live Whop Support Chat, sign in or create a free Whop account below
+            <strong>Checkout only needs your email.</strong> To message us directly inside live Whop Support Chat, sign in or create a free Whop account below
             {SITE.supportEmail ? (
               <>
                 {" "}

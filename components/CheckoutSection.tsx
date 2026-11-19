@@ -19,7 +19,7 @@ const INCLUDES = [
   "Per-serving nutrition on every recipe, estimated from USDA FoodData Central",
   "Ingredient & pantry guide + grocery shopping guide",
   "Batch preparation & storage guide with food-safety temperatures",
-  "Instant PDF download + emailed backup link",
+  "Instant access in your Whop library, plus a receipt by email",
 ];
 
 export function CheckoutSection() {
@@ -87,7 +87,7 @@ export function CheckoutSection() {
             {!session ? (
               <form onSubmit={start} className="mt-6" noValidate>
                 <label htmlFor="buyer-email" className="block text-base font-semibold">
-                  Where should we email your download link?
+                  Your email (use it to open your PDF)
                 </label>
                 <div className="relative mt-3">
                   <Mail className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-ink-2" aria-hidden />
@@ -105,7 +105,7 @@ export function CheckoutSection() {
                     className="min-h-14 w-full rounded-full border border-line bg-paper pl-12 pr-5 text-base outline-none transition-colors focus:border-ink"
                   />
                 </div>
-                <p id="email-help" className="mt-2 text-sm text-ink-2">We&apos;ll use it only to deliver your file and receipt.</p>
+                <p id="email-help" className="mt-2 text-sm text-ink-2">Whop sends your receipt here, and you sign in with it to open the PDF.</p>
                 {error && (
                   <p id="email-err" role="alert" className="mt-2 text-sm font-medium text-paprika-deep">
                     {error}
@@ -130,7 +130,7 @@ export function CheckoutSection() {
 
             <p className="mt-6 flex items-start gap-2 text-[0.82rem] font-medium text-ink-2">
               <Lock className="mt-0.5 size-4 shrink-0 text-sage" aria-hidden />
-              <span>No Whop account required • Instant download + emailed backup link • Secured by Whop</span>
+              <span>Instant access after payment • Free Whop sign-in with this email • Secured by Whop</span>
             </p>
           </div>
         </div>

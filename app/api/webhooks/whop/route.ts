@@ -2,6 +2,7 @@ import { randomUUID } from "node:crypto";
 import { NextResponse } from "next/server";
 import { unwrapWebhook } from "@whop/sdk/helpers";
 import { sendDeliveryEmail } from "@/lib/email";
+import { whopMode } from "@/lib/env";
 import { orders } from "@/lib/orders";
 
 export const runtime = "nodejs";
@@ -53,7 +54,7 @@ export async function POST(req: Request) {
     }
 
     const paid = await store.markPaid(order.orderId, p.id);
-    if (paid && (await store.once(`mail:${paid.orderId}`, 400 * DAY))) {
+    if (paid && !whopMode() && (await store.once(`mail:${paid.orderId}`, 400 * DAY))) {
       try {
         await sendDeliveryEmail(paid.buyerEmail, paid.orderId);
       } catch (e) {

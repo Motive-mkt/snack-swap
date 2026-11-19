@@ -111,11 +111,11 @@ export function Faq() {
   const support = useSupport();
   const items = [
     {
-      q: "Do I need a Whop account to buy?",
+      q: "Do I need a Whop account?",
       a: (
         <p>
-          No. Check out as a guest with just your email — card, Apple Pay, Google Pay or PayPal where your device supports them. Payment is processed by Whop,
-          but you never have to create or sign in to a Whop account to buy or download the Playbook.
+          You check out with just your email — card, Apple Pay, Google Pay or PayPal where your device supports them. Payment is processed by Whop, and your PDF
+          lives in your Whop library, so you sign in to a free Whop account with the same email to open it. Whop emails you a sign-in link.
         </p>
       ),
     },
@@ -123,8 +123,8 @@ export function Faq() {
       q: "How do I get the PDF?",
       a: (
         <p>
-          Right after payment you get an instant download on the confirmation page, and a backup download link is emailed to the address you entered. If the email
-          doesn&apos;t show up, check spam, or request a fresh link from the confirmation page or the support window — links are tied to your order, not to an account.
+          Right after payment you land on a confirmation page with a button to open your Whop library, where the PDF is waiting. Sign in with the email you used at
+          checkout. If the Whop email doesn&apos;t show up, check spam or message us from the support window with your checkout email.
         </p>
       ),
     },
