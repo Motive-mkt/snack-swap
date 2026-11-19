@@ -40,7 +40,7 @@ function Card({ r, index }: { r: Recipe; index: number }) {
       className="card-in group flex flex-col overflow-hidden sticker !rounded-3xl transition-[transform,box-shadow] duration-200 hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[9px_9px_0_var(--ink)]"
       style={{ animationDelay: `${Math.min(index, 8) * 30}ms` }}
     >
-      <div className="relative aspect-[4/3] bg-paper-3">
+      <div className="relative aspect-square bg-paper-3">
         <Image
           src={recipeImage(r.id)}
           alt={`${r.title}`}
@@ -93,6 +93,12 @@ function Card({ r, index }: { r: Recipe; index: number }) {
         </dl>
         <p className="mt-3 text-[0.68rem] text-ink-2/80">Per serving · {r.makes} · estimates</p>
       </div>
+      <a
+        href="#checkout"
+        className="mt-auto block border-t-[3px] border-ink bg-butter px-5 py-3 text-center text-sm font-bold text-ink transition-colors hover:bg-tomato"
+      >
+        get the full recipe →
+      </a>
     </article>
   );
 }

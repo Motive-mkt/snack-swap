@@ -5,6 +5,7 @@ import { Hero } from "@/components/Hero";
 import { CtaBand } from "@/components/CtaBand";
 import { Marquee } from "@/components/Marquee";
 import { StickyCta } from "@/components/StickyCta";
+import { WhatYouGet } from "@/components/WhatYouGet";
 import { RECIPES } from "@/data/recipes";
 import { KitchenStandardsAndSpreads } from "@/components/KitchenStandardsAndSpreads";
 import { Navbar } from "@/components/Navbar";
@@ -23,14 +24,16 @@ export default function Home() {
         <CrunchScene />
         <CravingExplorer />
         <Marquee items={TITLES.slice(14, 28)} className="bg-ink text-butter" duration={60} reverse />
-        <CtaBand line="found your craving? it's in the playbook." />
+        <CtaBand line="found your craving? it's in snack swap." />
         <RibbonScene />
         <KitchenStandardsAndSpreads />
         <Marquee items={TITLES.slice(28)} className="bg-mint text-ink" duration={50} />
         <CtaBand tone="butter" line="stop guessing. start swapping." />
         <SocialProof />
+        <WhatYouGet />
         <CheckoutSection />
         <Faq />
+        <CtaBand line="still craving it? swap it tonight." />
       </main>
       <Footer />
       <div className="h-20 bg-espresso lg:hidden" aria-hidden />

@@ -13,9 +13,9 @@ const PREVIEW_IDS = [1, 27, 28] as const;
 const SHORT: Record<number, string> = { 1: "Tortilla Triangles", 27: "Soft-Serve Bowl", 28: "Chicken Nuggets" };
 
 const STICKERS = [
-  { id: 1, cls: "left-[71%] top-[40%] w-[14%] -rotate-6", speed: 0.5, bg: "bg-blush" },
-  { id: 27, cls: "left-[69%] top-[4%] w-[14%] rotate-[5deg]", speed: -0.4, bg: "bg-mint" },
-  { id: 28, cls: "left-[84%] top-[17%] w-[14%] -rotate-3", speed: 0.7, bg: "bg-paper-2" },
+  { id: 1, cls: "left-[68%] top-[46%] w-[15%] -rotate-6", speed: 0.5, bg: "bg-blush" },
+  { id: 27, cls: "left-[65%] top-[2%] w-[15%] rotate-[5deg]", speed: -0.4, bg: "bg-mint" },
+  { id: 28, cls: "left-[83%] top-[16%] w-[15%] -rotate-3", speed: 0.7, bg: "bg-paper-2" },
 ];
 
 export function Hero() {
@@ -64,7 +64,7 @@ export function Hero() {
   return (
     <section id="top" ref={root} className="relative overflow-x-clip bg-butter">
       {/* ── headline stage ── */}
-      <div className="relative mx-auto md:min-h-[min(88svh,820px)] max-w-[1500px] px-5 pb-10 pt-10 sm:px-8 lg:pt-14">
+      <div className="wrap relative pb-12 pt-10 md:min-h-[min(82svh,760px)] lg:pt-14">
         <p
           data-hero-fade
           className="relative z-10 inline-flex max-w-full items-center gap-2 rounded-full border-[2.5px] border-ink bg-paper-2 px-4 py-1.5 text-[0.74rem] font-bold uppercase tracking-[0.12em] text-ink"
@@ -85,13 +85,35 @@ export function Hero() {
           </span>
         </h1>
 
+        <div className="relative z-10 mt-7 max-w-[34rem] md:max-w-[56%]">
+          <p data-hero-fade className="text-[1.12rem] font-medium leading-snug text-ink">
+            {STATS.total} home-kitchen recipes for the snacks you actually crave — with gram weights, real macros and honest prep times. One PDF, instant download.
+          </p>
+          <div data-hero-fade className="mt-6 flex flex-col gap-3 sm:flex-row">
+            <a href="#checkout" className="btn-primary !min-h-14 text-[1.05rem]">
+              get your snack swap{SITE.price ? ` · ${SITE.price}` : ""}
+            </a>
+            <a href="#swaps" className="btn-ghost !min-h-14">
+              browse the {STATS.total} swaps <ArrowDown className="size-4" aria-hidden />
+            </a>
+          </div>
+          <ul data-hero-fade className="mt-5 flex flex-wrap gap-x-5 gap-y-2 text-[0.84rem] font-bold text-ink" aria-label="Why buy here">
+            {["Instant PDF download", "Secure checkout by Whop", "No account needed"].map((t) => (
+              <li key={t} className="flex items-center gap-1.5">
+                <span aria-hidden className="grid size-4 place-items-center rounded-full bg-ink text-[0.6rem] leading-none text-butter">✓</span>
+                {t}
+              </li>
+            ))}
+          </ul>
+        </div>
+
         {/* stickers: real Playbook photography */}
         <div aria-hidden className="pointer-events-none absolute inset-0 hidden md:block">
           {STICKERS.map((st) => (
             <div key={st.id} className={`absolute ${st.cls}`} data-speed={st.speed}>
               <div data-hero-sticker data-hero-drift className={`sticker overflow-hidden !rounded-[1.4rem] p-1.5 ${st.bg}`}>
-                <div className="relative aspect-[3/4] overflow-hidden rounded-[1rem]">
-                  <Image src={recipeImage(st.id)} alt="" fill sizes="20vw" className="object-cover" priority />
+                <div className="relative aspect-[2/3] overflow-hidden rounded-[1rem]">
+                  <Image src={recipeImage(st.id)} alt="" fill sizes="(min-width:1280px) 300px, 28vw" quality={90} className="object-cover" priority />
                 </div>
               </div>
             </div>
@@ -102,8 +124,8 @@ export function Hero() {
         <div aria-hidden className="mt-8 flex gap-3 md:hidden">
           {[1, 27, 28].map((id, i) => (
             <div key={id} data-hero-sticker className={`sticker w-1/3 overflow-hidden !rounded-2xl p-1 ${i % 2 ? "rotate-3" : "-rotate-3"}`}>
-              <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
-                <Image src={recipeImage(id)} alt="" fill sizes="30vw" className="object-cover" />
+              <div className="relative aspect-[2/3] overflow-hidden rounded-xl">
+                <Image src={recipeImage(id)} alt="" fill sizes="45vw" quality={85} className="object-cover" />
               </div>
             </div>
           ))}
@@ -136,15 +158,6 @@ export function Hero() {
               spoon equivalents, with nutrition estimated per serving from USDA FoodData Central — and honest active
               prep time, kept separate from the chilling, baking or drying wait.
             </p>
-
-            <div data-hero-fade className="mt-8 flex flex-col gap-4 sm:flex-row">
-              <a href="#checkout" className="btn-primary">
-                get your snack swap{SITE.price ? ` · ${SITE.price}` : ""}
-              </a>
-              <a href="#swaps" className="btn-ghost">
-                browse the {STATS.total} swaps <ArrowDown className="size-4" aria-hidden />
-              </a>
-            </div>
 
             <ul data-hero-fade className="mt-9 flex flex-wrap gap-2.5" aria-label="At a glance">
               {proof.map((p, i) => (
