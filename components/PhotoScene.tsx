@@ -14,7 +14,7 @@ type Props = {
   eyebrow: string;
   title: string;
   steps: Step[];
-  hero: { src: string; alt: string; w: number; ratio: number };
+  hero: { src: string; alt: string; w: number; ratio: number; framed?: boolean };
   mode: "drop" | "unroll";
   orbit: Orbit[];
   chips: string[];
@@ -140,15 +140,14 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
               </div>
             ))}
             <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2" style={{ width: `${hero.w}%` }}>
-              <div data-hero>
+              <div data-hero className={hero.framed ? "sticker !rounded-[1.5rem] bg-paper-2 p-1.5 shadow-[8px_8px_0_var(--ink)]" : undefined}>
                 <Image
                   src={hero.src}
                   alt={hero.alt}
-                  width={900}
-                  height={Math.round(900 * hero.ratio)}
-                  sizes="(min-width:1024px) 38vw, 70vw"
-                  priority={false}
-                  className="h-auto w-full drop-shadow-[0_26px_22px_rgba(30,11,43,0.45)]"
+                  width={640}
+                  height={Math.round(640 * hero.ratio)}
+                  sizes="(min-width:1024px) 30vw, 60vw"
+                  className={hero.framed ? "h-auto w-full rounded-[1.1rem]" : "h-auto w-full drop-shadow-[0_26px_22px_rgba(30,11,43,0.45)]"}
                 />
               </div>
             </div>

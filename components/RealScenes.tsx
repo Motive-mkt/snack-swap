@@ -15,13 +15,13 @@ export function CrunchScene() {
       eyebrow="Recipe 02 · Crunchy & salty"
       title="from three potatoes to a real snap"
       mode="drop"
-      hero={{ src: "/cut/02.webp", alt: "Crisp baked potato chips from Recipe 02", w: 60, ratio: 1.116 }}
+      hero={{ src: "/recipes/02.webp", alt: "Crisp baked potato chips from Recipe 02", w: 36, ratio: 1.5, framed: true }}
       orbit={[
-        { src: "/cut/01.webp", x: 12, y: 24, w: 14, rot: -14, depth: 1.2 },
-        { src: "/cut/03.webp", x: 88, y: 22, w: 12, rot: 16, depth: 0.8 },
-        { src: "/cut/05.webp", x: 9, y: 76, w: 19, rot: -6, depth: 1.5 },
-        { src: "/cut/40.webp", x: 91, y: 74, w: 20, rot: 8, depth: 1 },
-        { src: "/cut/06.webp", x: 50, y: 9, w: 14, rot: 4, depth: 0.6 },
+        { src: "/cut/03.webp", x: 13, y: 26, w: 13, rot: -14, depth: 1.2 },
+        { src: "/cut/04.webp", x: 87, y: 24, w: 13, rot: 16, depth: 0.8 },
+        { src: "/cut/05.webp", x: 11, y: 76, w: 20, rot: -6, depth: 1.5 },
+        { src: "/cut/40.webp", x: 89, y: 75, w: 21, rot: 8, depth: 1 },
+        { src: "/cut/06.webp", x: 50, y: 9, w: 15, rot: 4, depth: 0.6 },
       ]}
       steps={[
         { h: "Start with three russets", p: "500 g russet potatoes (about 3 medium), scrubbed and left unpeeled." },
@@ -43,13 +43,11 @@ export function RibbonScene() {
       eyebrow="Recipe 37 · Fruit-forward sweet snacks"
       title="four whole fruits, one flexible ribbon"
       mode="unroll"
-      hero={{ src: "/cut/37.webp", alt: "Homemade fruit roll-up strips from Recipe 37", w: 44, ratio: 1.5 }}
+      hero={{ src: "/recipes/37.webp", alt: "Homemade fruit roll-up strips from Recipe 37", w: 36, ratio: 1.5, framed: true }}
       orbit={[
-        { src: "/cut/27.webp", x: 12, y: 26, w: 15, rot: -8, depth: 1.2 },
-        { src: "/cut/25.webp", x: 88, y: 24, w: 13, rot: 10, depth: 0.9 },
-        { src: "/cut/26.webp", x: 9, y: 76, w: 19, rot: -10, depth: 1.4 },
-        { src: "/cut/22.webp", x: 91, y: 76, w: 18, rot: 6, depth: 1 },
-        { src: "/cut/23.webp", x: 50, y: 8, w: 15, rot: 3, depth: 0.6 },
+        { src: "/cut/27.webp", x: 13, y: 28, w: 16, rot: -8, depth: 1.2 },
+        { src: "/cut/23.webp", x: 87, y: 26, w: 16, rot: 8, depth: 0.9 },
+        { src: "/cut/22.webp", x: 11, y: 77, w: 20, rot: -6, depth: 1.4 },
       ]}
       steps={[
         { h: "Blended smooth", p: "300 g apple, 250 g strawberries, 150 g blueberries and 10 g lemon juice — no honey, syrup or added sugar. Heated to 160°F (71°C), then cooled 5 minutes." },
