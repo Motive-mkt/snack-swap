@@ -175,3 +175,11 @@ button, [role="tab"], a, summary { touch-action: manipulation; }
 .card-in { animation: card-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
+
+/* Touch devices use native scrolling (Lenis is fine-pointer only), so offset anchors for the sticky header here. */
+@media (pointer: coarse) {
+  html {
+    scroll-padding-top: 72px;
+    scroll-behavior: smooth;
+  }
+}

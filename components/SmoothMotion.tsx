@@ -18,21 +18,30 @@ export function SmoothMotion() {
     gsap.registerPlugin(ScrollTrigger, SplitText);
     const mm = gsap.matchMedia();
 
+    // Touch devices keep native scrolling: lighter, steadier, and no JS-driven scroll on low-memory phones.
+    const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+    ScrollTrigger.config({ ignoreMobileResize: true });
+
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      const lenis = new Lenis({
-        lerp: 0.1,
-        anchors: { offset: -72 },
-        prevent: (node) => !!node.closest?.('[role="dialog"]'),
-      });
-      lenis.on("scroll", ScrollTrigger.update);
-      const tick = (t: number) => lenis.raf(t * 1000);
-      gsap.ticker.add(tick);
-      gsap.ticker.lagSmoothing(0);
+      let lenis: Lenis | null = null;
+      let tick: ((t: number) => void) | null = null;
+      if (fine) {
+        lenis = new Lenis({
+          lerp: 0.1,
+          anchors: { offset: -72 },
+          prevent: (node) => !!node.closest?.('[role="dialog"]'),
+        });
+        lenis.on("scroll", ScrollTrigger.update);
+        const l = lenis;
+        tick = (t: number) => l.raf(t * 1000);
+        gsap.ticker.add(tick);
+        gsap.ticker.lagSmoothing(0);
+      }
 
       // masked line reveals on section headings
       const splits: SplitText[] = [];
       document.querySelectorAll<HTMLElement>("main h2").forEach((el) => {
-        if (el.closest("[data-nosplit]")) return;
+        if (!fine || el.closest("[data-nosplit]")) return;
         splits.push(
           SplitText.create(el, {
             type: "lines",
@@ -115,8 +124,8 @@ export function SmoothMotion() {
       return () => {
         cleanups.forEach((c) => c());
         splits.forEach((s) => s.revert());
-        gsap.ticker.remove(tick);
-        lenis.destroy();
+        if (tick) gsap.ticker.remove(tick);
+        lenis?.destroy();
       };
     });
 

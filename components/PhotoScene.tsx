@@ -135,7 +135,7 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
                   data-rot={o.rot}
                   style={{ transform: `rotate(${o.rot}deg)` }}
                 >
-                  <Image src={o.src} alt="" width={600} height={600} sizes="(min-width:1024px) 20vw, 30vw" className="h-auto w-full drop-shadow-[0_14px_14px_rgba(30,11,43,0.35)]" />
+                  <Image src={o.src} alt="" width={600} height={600} sizes="(min-width:1024px) 20vw, 30vw" className="h-auto w-full pointer-fine:drop-shadow-[0_14px_14px_rgba(30,11,43,0.35)]" />
                 </div>
               </div>
             ))}
@@ -147,7 +147,7 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
                   width={640}
                   height={Math.round(640 * hero.ratio)}
                   sizes="(min-width:1024px) 30vw, 60vw"
-                  className={hero.framed ? "h-auto w-full rounded-[1.1rem]" : "h-auto w-full drop-shadow-[0_26px_22px_rgba(30,11,43,0.45)]"}
+                  className={hero.framed ? "h-auto w-full rounded-[1.1rem]" : "h-auto w-full pointer-fine:drop-shadow-[0_26px_22px_rgba(30,11,43,0.45)]"}
                 />
               </div>
             </div>

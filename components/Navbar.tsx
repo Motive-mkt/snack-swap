@@ -15,7 +15,7 @@ export function Navbar() {
   const support = useSupport();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-line/80 bg-paper">
       <div className="wrap flex h-16 items-center justify-between gap-4">
         <a href="#top" className="flex items-baseline gap-2" aria-label="Snack Swap by Bite — home">
           <span className="whitespace-nowrap font-display text-[1.3rem] font-extrabold lowercase leading-none tracking-[-0.04em] sm:text-[1.65rem]">snack swap</span>
