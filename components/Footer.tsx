@@ -14,7 +14,7 @@ export function Footer() {
             <p className="mt-1 text-sm">Your favourite cravings, reimagined in your own kitchen.</p>
           </div>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
-            {[["#swaps", "Swaps"], ["#inside", "Inside"], ["#faq", "FAQ"], ["#checkout", "Get the Playbook"]].map(([h, l]) => (
+            {[["#swaps", "Swaps"], ["#inside", "Inside"], ["#faq", "FAQ"], ["#checkout", "Get your Snack Swap"]].map(([h, l]) => (
               <a key={h} href={h} className="flex min-h-11 items-center hover:text-paper">{l}</a>
             ))}
             <button type="button" onClick={support.open} className="flex min-h-11 cursor-pointer items-center hover:text-paper">Contact</button>

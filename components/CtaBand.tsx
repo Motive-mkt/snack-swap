@@ -11,7 +11,7 @@ export function CtaBand({ tone = "tomato", line }: { tone?: "tomato" | "butter";
           </p>
         </div>
         <a href="#checkout" className="btn-ghost shrink-0">
-          get the playbook{SITE.price ? ` · ${SITE.price}` : ""}
+          get your snack swap{SITE.price ? ` · ${SITE.price}` : ""}
         </a>
       </div>
     </div>

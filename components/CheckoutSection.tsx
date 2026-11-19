@@ -49,7 +49,7 @@ export function CheckoutSection() {
       <div className="wrap">
         <div className="mx-auto max-w-2xl text-center">
           <p className="eyebrow">One-time purchase</p>
-          <h2 id="checkout-h" className="mt-3 text-[clamp(2.2rem,5vw,3.6rem)]">Get the Playbook</h2>
+          <h2 id="checkout-h" className="mt-3 text-[clamp(2.2rem,5vw,3.6rem)]">Get your Snack Swap</h2>
         </div>
 
         <div className="mx-auto mt-10 grid max-w-5xl overflow-hidden rounded-[2rem] border-[3px] border-ink bg-paper-2 shadow-[10px_10px_0_var(--ink)] lg:grid-cols-[1fr_1fr]">

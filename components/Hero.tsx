@@ -139,7 +139,7 @@ export function Hero() {
 
             <div data-hero-fade className="mt-8 flex flex-col gap-4 sm:flex-row">
               <a href="#checkout" className="btn-primary">
-                get the playbook{SITE.price ? ` · ${SITE.price}` : ""}
+                get your snack swap{SITE.price ? ` · ${SITE.price}` : ""}
               </a>
               <a href="#swaps" className="btn-ghost">
                 browse the {STATS.total} swaps <ArrowDown className="size-4" aria-hidden />

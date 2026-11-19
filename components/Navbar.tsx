@@ -45,7 +45,7 @@ export function Navbar() {
 
         <div className="flex items-center gap-2">
           <a href="#checkout" className="btn-primary !min-h-11 whitespace-nowrap !px-3.5 text-[0.85rem] !shadow-[3px_3px_0_var(--ink)] sm:!px-5 sm:text-[0.95rem]">
-            get the playbook
+            get your snack swap
           </a>
           <button
             type="button"
