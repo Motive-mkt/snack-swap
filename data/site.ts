@@ -25,7 +25,7 @@ export const SITE = {
   brand: "Bite",
   pages: 151,
   /** Set NEXT_PUBLIC_PRICE_LABEL (e.g. "$19") to show the price on the offer card. Whop's checkout always shows the real, authoritative price. */
-  price: process.env.NEXT_PUBLIC_PRICE_LABEL || "",
+  price: "", // TEMP diagnostic: price label disabled while isolating a phone-crash; Whop checkout still shows the real price
   supportEmail: process.env.NEXT_PUBLIC_SUPPORT_EMAIL || "",
   /** Flip to true only once genuine, disclosed reviews exist in data/reviews.ts (FTC 16 CFR Part 465). */
   SHOW_VERIFIED_REVIEWS: false,
