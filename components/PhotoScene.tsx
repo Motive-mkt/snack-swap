@@ -120,7 +120,7 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
           </div>
 
           {/* stage */}
-          <div className="relative order-1 mx-auto aspect-[5/4] w-full max-w-[720px] lg:order-2 lg:aspect-[6/5]">
+          <div className="relative order-1 mx-auto mb-10 aspect-[5/4] w-full max-w-[720px] lg:order-2 lg:mb-0 lg:aspect-[6/5]">
             {orbit.map((o) => (
               <div
                 key={o.src}
@@ -151,9 +151,9 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
                 />
               </div>
             </div>
-            <ul className="absolute bottom-0 left-0 right-0 flex flex-wrap justify-center gap-2" aria-label="Nutrition per serving">
+            <ul className="absolute inset-x-0 -bottom-9 flex flex-nowrap justify-center gap-1.5 sm:gap-2 lg:bottom-0 lg:flex-wrap" aria-label="Nutrition per serving">
               {chips.map((c) => (
-                <li key={c} data-chip className="num rounded-full border-2 border-ink bg-paper-2 px-3.5 py-1.5 text-sm font-bold">
+                <li key={c} data-chip className="num rounded-full border-2 border-ink bg-paper-2 px-2.5 py-1 text-xs font-bold sm:px-3.5 sm:py-1.5 sm:text-sm">
                   {c}
                 </li>
               ))}

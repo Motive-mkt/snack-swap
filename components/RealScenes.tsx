@@ -45,9 +45,11 @@ export function RibbonScene() {
       mode="unroll"
       hero={{ src: "/recipes/37.webp", alt: "Homemade fruit roll-up strips from Recipe 37", w: 36, ratio: 1.5, framed: true }}
       orbit={[
-        { src: "/cut/27.webp", x: 13, y: 28, w: 16, rot: -8, depth: 1.2 },
-        { src: "/cut/23.webp", x: 87, y: 26, w: 16, rot: 8, depth: 0.9 },
-        { src: "/cut/22.webp", x: 11, y: 77, w: 20, rot: -6, depth: 1.4 },
+        { src: "/cut/27.webp", x: 13, y: 28, w: 15, rot: -8, depth: 1.2 },
+        { src: "/cut/15.webp", x: 87, y: 27, w: 12, rot: 9, depth: 0.9 },
+        { src: "/cut/22.webp", x: 11, y: 76, w: 19, rot: -6, depth: 1.4 },
+        { src: "/cut/24.webp", x: 89, y: 75, w: 14, rot: 8, depth: 1 },
+        { src: "/cut/23.webp", x: 50, y: 9, w: 14, rot: 3, depth: 0.6 },
       ]}
       steps={[
         { h: "Blended smooth", p: "300 g apple, 250 g strawberries, 150 g blueberries and 10 g lemon juice — no honey, syrup or added sugar. Heated to 160°F (71°C), then cooled 5 minutes." },
