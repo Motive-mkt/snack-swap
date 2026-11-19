@@ -216,8 +216,8 @@ export function CravingExplorer() {
         <p className="mt-8 max-w-3xl text-xs text-ink-2">
           &ldquo;Direct-format alternative&rdquo; means the recipe keeps a defining shape, texture or flavour direction.
           &ldquo;Craving alternative&rdquo; shares an occasion or sensory note without claiming to recreate the
-          original. Brand names belong to their owners and appear for identification only. Photos are conceptual
-          food visualizations.
+          original. Brand names belong to their owners and appear for identification only. Photos are for
+          illustration.
         </p>
       </div>
     </section>

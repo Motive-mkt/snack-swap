@@ -1,6 +1,6 @@
 /*
   FTC 16 CFR Part 465 — only REAL reviews from real people may go here.
-  Never add invented, AI-written or edited-for-hype quotes. If the reviewer received
+  Only add real quotes you have permission to use, word for word. If the reviewer received
   the guide free (or any other material connection exists) set `disclosure` accordingly.
   The site only renders this list when SITE.SHOW_VERIFIED_REVIEWS === true.
 */

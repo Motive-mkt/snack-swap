@@ -34,7 +34,7 @@ export function Footer() {
           </p>
           <p>
             <strong className="text-paper/85">Allergens.</strong> Several recipes include milk, wheat, eggs, peanuts, tree nuts, soy or sesame. Always read ingredient labels and cross-contact statements. Follow the food-safety temperatures in
-            each recipe. Photographs in the Playbook are conceptual food visualizations.
+            each recipe. Photos are for illustration; your results will vary.
           </p>
           <p>© 2026 Bite. All rights reserved. Payments processed by Whop.</p>
         </div>

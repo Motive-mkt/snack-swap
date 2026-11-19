@@ -30,7 +30,7 @@ export function CrunchScene() {
         { h: `${fmt(recipeById(2).kcal)} kcal a serving`, p: "A serving is 1/4 of the batch — about 28–30 g, roughly 25–35 chips. They finish crisping as they cool." },
       ]}
       chips={chips(2)}
-      note="Direct-format alternative, inspired by Lay's Classic (not affiliated). Per serving, estimated. Conceptual food visualization."
+      note="Direct-format alternative, inspired by Lay's Classic (not affiliated). Per serving, estimated."
     />
   );
 }
@@ -57,7 +57,7 @@ export function RibbonScene() {
         { h: "Cooled and cut", p: "Cooled 30 minutes, peeled from the liner and cut with clean scissors into 6 narrow strips, then rolled." },
       ]}
       chips={chips(37)}
-      note="Per serving, estimated. Conceptual food visualization."
+      note="Per serving, estimated."
     />
   );
 }

@@ -218,7 +218,7 @@ export function Hero() {
                         </span>
                       </p>
                       <p className="mt-3 text-[0.7rem] text-ink-2/80">
-                        Per serving, estimated. Conceptual food visualization.
+                        Per serving, estimated.
                       </p>
                     </div>
                   </article>

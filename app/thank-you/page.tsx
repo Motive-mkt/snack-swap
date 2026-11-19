@@ -4,6 +4,7 @@ import { CheckCircle2, Download, Loader2, TriangleAlert } from "lucide-react";
 import { AutoRefresh } from "@/components/AutoRefresh";
 import { ResendForm } from "@/components/ResendForm";
 import { downloadUrlFor } from "@/lib/email";
+import { whopAccessUrl } from "@/lib/env";
 import { orders } from "@/lib/orders";
 import { whop } from "@/lib/whop";
 
@@ -58,9 +59,19 @@ export default async function ThankYou({ searchParams }: { searchParams: SP }) {
             <p className="mt-3 text-ink-2">
               Payment confirmed. Download it now — a backup link is also on its way to <strong className="text-ink">{order.buyerEmail}</strong>.
             </p>
-            <a href={downloadUrlFor(order.orderId)} className="btn-primary mt-6 w-full sm:w-auto">
-              <Download className="size-5" aria-hidden /> Download the PDF
-            </a>
+            <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+              <a href={downloadUrlFor(order.orderId)} className="btn-primary w-full sm:w-auto">
+                <Download className="size-5" aria-hidden /> Download the PDF
+              </a>
+              {whopAccessUrl() && (
+                <a href={whopAccessUrl()} className="btn-ghost w-full sm:w-auto" target="_blank" rel="noopener noreferrer">
+                  Open in your Whop library
+                </a>
+              )}
+            </div>
+            {whopAccessUrl() && (
+              <p className="mt-3 text-xs text-ink-2">Your purchase is also saved in Whop. Sign in there with <strong className="text-ink">{order.buyerEmail}</strong> to re-download any time.</p>
+            )}
             <p className="mt-3 text-xs text-ink-2">151 pages · links stay valid for 7 days, and you can always request a fresh one below.</p>
           </>
         ) : failed ? (

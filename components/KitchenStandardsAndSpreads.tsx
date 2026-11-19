@@ -141,7 +141,7 @@ export function KitchenStandardsAndSpreads() {
                       </li>
                     ))}
                   </ul>
-                  <p className="mt-6 text-xs text-paper/55">Per serving, estimated. Photos in the Playbook are conceptual food visualizations.</p>
+                  <p className="mt-6 text-xs text-paper/55">Per serving, estimated.</p>
                 </div>
               </div>
             </TabsContent>

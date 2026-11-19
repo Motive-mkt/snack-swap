@@ -7,3 +7,6 @@ export function required(name: string): string {
   if (!v) throw new Error(`Missing required env var ${name}`);
   return v;
 }
+
+/** Where buyers open the Files app on Whop (their purchase unlocks it). Optional. */
+export const whopAccessUrl = () => process.env.WHOP_ACCESS_URL || "";
