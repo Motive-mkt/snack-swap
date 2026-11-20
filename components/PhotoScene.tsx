@@ -4,6 +4,7 @@ import Image from "next/image";
 import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { dbg } from "@/lib/dbg";
 
 export type Orbit = { src: string; x: number; y: number; w: number; rot: number; depth: number };
 export type Step = { h: string; p: string };
@@ -87,6 +88,7 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
 
         // macro chips at the end
         tl.fromTo("[data-chip]", { scale: 0, rotate: -18 }, { scale: 1, rotate: 0, stagger: 0.04, ease: "back.out(2)", duration: 0.1 }, 1 - 0.2);
+        dbg("scene:" + id);
       }, el);
       return () => ctx.revert();
     });
