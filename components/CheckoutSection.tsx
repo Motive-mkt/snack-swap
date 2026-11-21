@@ -1,17 +1,10 @@
 "use client";
 
 import Image from "next/image";
-import dynamic from "next/dynamic";
-import { useState } from "react";
-import { ArrowLeft, Check, Lock, Mail } from "lucide-react";
+import { Check, Lock } from "lucide-react";
 import { SITE, STATS } from "@/data/site";
 
-const WhopCheckoutPanel = dynamic(() => import("./WhopCheckoutPanel"), {
-  ssr: false,
-  loading: () => <div className="h-40 animate-pulse rounded-2xl bg-paper-3" aria-label="Loading secure checkout" />,
-});
-
-type Session = { orderId: string; checkoutConfigId: string; environment: "production" | "sandbox" };
+const CHECKOUT_URL = "https://whop.com/checkout/plan_xm2ljJT2ETStl";
 
 const INCLUDES = [
   `${STATS.total} craving-led recipes across 7 categories`,
@@ -23,27 +16,6 @@ const INCLUDES = [
 ];
 
 export function CheckoutSection() {
-  const [email, setEmail] = useState("");
-  const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
-  const [session, setSession] = useState<Session | null>(null);
-
-  async function start(e: React.FormEvent) {
-    e.preventDefault();
-    setError("");
-    setBusy(true);
-    try {
-      const res = await fetch("/api/checkout", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ email }) });
-      const data = await res.json();
-      if (!res.ok) throw new Error(data.error ?? "Something went wrong.");
-      setSession(data as Session);
-    } catch (err) {
-      setError(err instanceof Error ? err.message : "Something went wrong. Please try again.");
-    } finally {
-      setBusy(false);
-    }
-  }
-
   return (
     <section id="checkout" aria-labelledby="checkout-h" className="border-y-[3px] border-ink bg-butter py-20 lg:py-28">
       <div className="wrap">
@@ -76,57 +48,15 @@ export function CheckoutSection() {
             </p>
           </div>
 
-          {/* Checkout */}
+        {/* Checkout: plain link to Whop's hosted checkout (no embedded payment widget) */}
           <div className="p-7 sm:p-9">
-            <ol className="num flex items-center gap-2 text-xs font-semibold" aria-label="Checkout steps">
-              <li className={`rounded-full px-3 py-1 ${!session ? "bg-ink text-paper" : "bg-sage-soft text-sage"}`}>1 · Email</li>
-              <li aria-hidden className="h-px w-6 bg-line" />
-              <li className={`rounded-full px-3 py-1 ${session ? "bg-ink text-paper" : "border border-line text-ink-2"}`}>2 · Payment</li>
-            </ol>
-
-            {!session ? (
-              <form onSubmit={start} className="mt-6" noValidate>
-                <label htmlFor="buyer-email" className="block text-base font-semibold">
-                  Your email (use it to open your PDF)
-                </label>
-                <div className="relative mt-3">
-                  <Mail className="pointer-events-none absolute left-4 top-1/2 size-5 -translate-y-1/2 text-ink-2" aria-hidden />
-                  <input
-                    id="buyer-email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    inputMode="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="you@example.com"
-                    aria-invalid={!!error}
-                    aria-describedby={error ? "email-err" : "email-help"}
-                    className="min-h-14 w-full rounded-full border border-line bg-paper pl-12 pr-5 text-base outline-none transition-colors focus:border-ink"
-                  />
-                </div>
-                <p id="email-help" className="mt-2 text-sm text-ink-2">Whop sends your receipt here, and you sign in with it to open the PDF.</p>
-                {error && (
-                  <p id="email-err" role="alert" className="mt-2 text-sm font-medium text-paprika-deep">
-                    {error}
-                  </p>
-                )}
-                <button type="submit" disabled={busy} className="btn-primary mt-5 w-full !min-h-14">
-                  {busy ? "Preparing secure checkout…" : "Continue to payment"}
-                </button>
-              </form>
-            ) : (
-              <div className="mt-6">
-                <button
-                  type="button"
-                  onClick={() => setSession(null)}
-                  className="mb-4 inline-flex min-h-11 cursor-pointer items-center gap-1.5 text-sm font-medium text-ink-2 hover:text-ink"
-                >
-                  <ArrowLeft className="size-4" aria-hidden /> Change email ({email})
-                </button>
-                <WhopCheckoutPanel checkoutConfigId={session.checkoutConfigId} orderId={session.orderId} email={email} environment={session.environment} />
-              </div>
-            )}
+            <p className="text-base font-semibold">Instant access after payment</p>
+            <p className="mt-2 text-sm text-ink-2">
+              You will pay on Whop&apos;s secure checkout, then open your PDF from your Whop library. Use the same email to sign in.
+            </p>
+            <a href={CHECKOUT_URL} className="btn-primary mt-6 w-full !min-h-14 text-center">
+              Get the Snack Swap Playbook
+            </a>
 
             <p className="mt-6 flex items-start gap-2 text-[0.82rem] font-medium text-ink-2">
               <Lock className="mt-0.5 size-4 shrink-0 text-sage" aria-hidden />
