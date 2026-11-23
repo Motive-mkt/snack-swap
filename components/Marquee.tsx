@@ -1,3 +1,6 @@
+"use client";
+
+import { useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 function Burst() {
@@ -23,6 +26,18 @@ export function Marquee({
   duration?: number;
   reverse?: boolean;
 }) {
+  const root = useRef<HTMLDivElement>(null);
+  // the strip and its spinning stars only animate while they can be seen
+  useEffect(() => {
+    const el = root.current;
+    if (!el) return;
+    const io = new IntersectionObserver(([e]) => {
+      el.dataset.paused = e.isIntersecting ? "0" : "1";
+    }, { rootMargin: "160px 0px" });
+    io.observe(el);
+    return () => io.disconnect();
+  }, []);
+
   const row = (
     <div className="flex shrink-0 items-center" aria-hidden>
       {items.map((t, i) => (
@@ -35,9 +50,10 @@ export function Marquee({
   );
   return (
     <div
+      ref={root}
       role="presentation"
       className={cn(
-        "overflow-hidden border-y-[3px] border-ink py-4 font-display text-[clamp(2rem,5.5vw,4.5rem)] font-extrabold lowercase leading-none tracking-tight sm:py-6",
+        "marquee-root overflow-hidden border-y-[3px] border-ink py-4 font-display text-[clamp(2rem,5.5vw,4.5rem)] font-extrabold lowercase leading-none tracking-tight sm:py-6",
         className,
       )}
     >

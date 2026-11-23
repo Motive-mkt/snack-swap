@@ -11,7 +11,7 @@ export function Footer() {
         <div className="flex flex-col justify-between gap-8 md:flex-row">
           <div>
             <p className="font-display text-3xl text-paper">Snack Swap</p>
-            <p className="mt-1 text-sm">Your favourite cravings, reimagined in your own kitchen.</p>
+            <p className="mt-1 text-sm">Your favorite cravings, reimagined in your own kitchen.</p>
           </div>
           <nav aria-label="Footer" className="flex flex-wrap gap-x-6 gap-y-1 text-sm">
             {[["#swaps", "Swaps"], ["#inside", "Inside"], ["#faq", "FAQ"], ["#checkout", "Get your Snack Swap"]].map(([h, l]) => (

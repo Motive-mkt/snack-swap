@@ -150,6 +150,21 @@ button, [role="tab"], a, summary { touch-action: manipulation; }
 
 @keyframes marquee { to { transform: translateX(-50%); } }
 .marquee-track { display: flex; width: max-content; animation: marquee var(--marquee-d, 40s) linear infinite; }
+/* Hero snack rain: tiny single-piece snacks fall behind the headline (animated from SnackRain.tsx, transform only). */
+.snack-rain { contain: layout paint style; animation: rain-in 1.2s ease-out 0.5s both; }
+.snack { position: absolute; top: 0; display: block; pointer-events: none; will-change: transform; transform: translate3d(0, -64px, 0); }
+.snack > svg { display: block; width: 100%; height: 100%; }
+.snack-extra { display: none; }
+@keyframes rain-in { from { opacity: 0; } to { opacity: 1; } }
+@media (min-width: 768px) {
+  .snack-extra { display: block; }
+  .snack > svg { transform: scale(1.2); }
+}
+@media (prefers-reduced-motion: reduce) { .snack-rain { display: none; } }
+/* Marquee rows stop animating while they are off screen (see Marquee.tsx). */
+.marquee-root[data-paused="1"] .marquee-track,
+.marquee-root[data-paused="1"] .spin-slow { animation-play-state: paused; }
+
 @keyframes spin-slow { to { transform: rotate(360deg); } }
 .spin-slow { animation: spin-slow 18s linear infinite; }
 
@@ -172,7 +187,7 @@ button, [role="tab"], a, summary { touch-action: manipulation; }
   from { opacity: 0; transform: translateY(10px); }
   to { opacity: 1; transform: none; }
 }
-.card-in { animation: card-in 0.35s cubic-bezier(0.22, 1, 0.36, 1) both; }
+.card-in { animation: card-in 0.28s cubic-bezier(0.22, 1, 0.36, 1) both; }
 .no-scrollbar { scrollbar-width: none; }
 .no-scrollbar::-webkit-scrollbar { display: none; }
 

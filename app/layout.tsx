@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
   title: "Snack Swap Playbook — 40 craving-led snack swaps, macros included",
   description:
-    "40 homemade swaps for the chips, cookies, soft-serve and fast-food favourites you actually crave. Gram weights, US cup equivalents, USDA-based nutrition per serving. 151-page PDF, instant download.",
+    "40 homemade swaps for the chips, cookies, soft-serve and fast-food favorites you actually crave. Gram weights, US cup equivalents, USDA-based nutrition per serving. 151-page PDF, instant download.",
   openGraph: {
     title: "Snack Swap Playbook by Bite",
     description:

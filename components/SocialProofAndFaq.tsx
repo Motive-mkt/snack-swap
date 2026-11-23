@@ -143,7 +143,7 @@ export function Faq() {
       a: (
         <p>
           No — they&apos;re alternatives, not identical copies. {STATS.direct} recipes are &ldquo;direct-format alternatives&rdquo; that keep a defining shape, texture or
-          flavour direction; the other {STATS.craving} are &ldquo;craving alternatives&rdquo; that share an occasion or sensory note. Brand names are reference points only,
+          flavor direction; the other {STATS.craving} are &ldquo;craving alternatives&rdquo; that share an occasion or sensory note. Brand names are reference points only,
           and Snack Swap is not affiliated with or endorsed by any brand named.
         </p>
       ),

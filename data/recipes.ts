@@ -41,10 +41,10 @@ export const CATEGORIES: { id: CategoryId; label: string; short: string }[] = [
   },
   { id: "candy", label: "Candy-Inspired Bites", short: "Candy" },
   { id: "frozen", label: "Frozen & Chilled Treats", short: "Frozen" },
-  { id: "protein", label: "Savoury Protein Snacks", short: "Protein" },
+  { id: "protein", label: "Savory Protein Snacks", short: "Protein" },
   {
     id: "fastfood",
-    label: "Fast-Food-Inspired Favourites",
+    label: "Fast-Food-Inspired Favorites",
     short: "Fast-food",
   },
   { id: "fruit", label: "Fruit-Forward Sweet Snacks", short: "Fruit" },
@@ -127,7 +127,7 @@ export const RECIPES: Recipe[] = [
     insp: "Chester's Flamin' Hot Fries",
     kind: "craving",
     blurb:
-      "Sticks Golden edges, a firm cornmeal crust, and a warm chili-paprika kick. Serve warm, within about 15 minutes of baking, while the coating is at its crispest.",
+      "Golden edges, a firm cornmeal crust, and a warm chili-paprika kick. Serve warm, within about 15 minutes of baking, while the coating is at its crispest.",
     prepMin: 15,
     prepLabel: "15 min",
     totalLabel: "~55 min",
@@ -150,7 +150,7 @@ export const RECIPES: Recipe[] = [
     insp: "Orville Redenbacher Butter Popcorn",
     kind: "craving",
     blurb:
-      "Popcorn Big, airy popcorn with a glossy butter finish and a light, even saltiness, no seasoning packet needed. Melted butter and a gentle toss spread flavor across every fluffy kernel.",
+      "Big, airy popcorn with a glossy butter finish and a light, even saltiness, no seasoning packet needed. Melted butter and a gentle toss spread flavor across every fluffy kernel.",
     prepMin: 5,
     prepLabel: "5 min",
     totalLabel: "10–12 min",
@@ -242,7 +242,7 @@ export const RECIPES: Recipe[] = [
     insp: "hummus-and-pretzel snack packs",
     kind: "craving",
     blurb:
-      "Pita Crisps Creamy white beans, bright lemon, and sharp raw garlic make a spoonable dip, paired with brittle, lightly salted pita crisps. Ordinary pantry ingredients, a familiar dip-and-crunch craving.",
+      "Creamy white beans, bright lemon, and sharp raw garlic make a spoonable dip, paired with brittle, lightly salted pita crisps. Ordinary pantry ingredients, a familiar dip-and-crunch craving.",
     prepMin: 15,
     prepLabel: "15 min",
     totalLabel: "~35 min",
@@ -288,7 +288,7 @@ export const RECIPES: Recipe[] = [
     insp: "Chips Ahoy! Chocolate Chip",
     kind: "direct",
     blurb:
-      "Cookies Little cookies bake to golden, snappy edges with a slightly tender center that firms as it cools. A short chill helps the dough hold its shape, and the small size gives plenty of crisp perimeter around the chocolate chips.",
+      "Little cookies bake to golden, snappy edges with a slightly tender center that firms as it cools. A short chill helps the dough hold its shape, and the small size gives plenty of crisp perimeter around the chocolate chips.",
     prepMin: 20,
     prepLabel: "20 min",
     totalLabel: "1 hr 44 min",
@@ -311,7 +311,7 @@ export const RECIPES: Recipe[] = [
     insp: "Oreo Original",
     kind: "direct",
     blurb:
-      "Cream A gently bitter cocoa biscuit with a clean snap at the edge and a cool, softly sweet vanilla cream-cheese center. Oat flour adds a toasty note, so this is its own sandwich cookie rather than a copy.",
+      "A gently bitter cocoa biscuit with a clean snap at the edge and a cool, softly sweet vanilla cream-cheese center. Oat flour adds a toasty note, so this is its own sandwich cookie rather than a copy.",
     prepMin: 35,
     prepLabel: "35 min",
     totalLabel: "~2 hr 30 min",
@@ -379,7 +379,7 @@ export const RECIPES: Recipe[] = [
     insp: "Cosmic Brownies (Little Debbie)",
     kind: "craving",
     blurb:
-      "Bites A dense, cocoa-forward brownie square that gets its soft texture from blended black beans. Cocoa and vanilla keep the flavor squarely in chocolate-dessert territory; a modest amount of sugar and oil keeps the crumb tender.",
+      "A dense, cocoa-forward brownie square that gets its soft texture from blended black beans. Cocoa and vanilla keep the flavor squarely in chocolate-dessert territory; a modest amount of sugar and oil keeps the crumb tender.",
     prepMin: 15,
     prepLabel: "15 min",
     totalLabel: "2 hr 22 min",
@@ -402,7 +402,7 @@ export const RECIPES: Recipe[] = [
     insp: "belVita Blueberry",
     kind: "craving",
     blurb:
-      "Biscuits These are crisp, thin oat-and-blueberry biscuits in the belVita sense (cookie-cracker style), not soft Southern biscuits. Toasted oats, gentle cinnamon, and bursts of blueberry make a good make-ahead breakfast-style snack.",
+      "These are crisp, thin oat-and-blueberry biscuits in the belVita sense (cookie-cracker style), not soft Southern biscuits. Toasted oats, gentle cinnamon, and bursts of blueberry make a good make-ahead breakfast-style snack.",
     prepMin: 20,
     prepLabel: "20 min",
     totalLabel: "~1 hr 40 min",
@@ -448,7 +448,7 @@ export const RECIPES: Recipe[] = [
     insp: "Reese's Peanut Butter Cups",
     kind: "direct",
     blurb:
-      "Peanut-Butter Cups A crisp snap of chocolate gives way to a softly salty, creamy peanut-butter middle, with a clear shell-and-filling contrast rather than a blended truffle.",
+      "A crisp snap of chocolate gives way to a softly salty, creamy peanut-butter middle, with a clear shell-and-filling contrast rather than a blended truffle.",
     prepMin: 20,
     prepLabel: "20 min",
     totalLabel: "1 hr 20 min",
@@ -494,7 +494,7 @@ export const RECIPES: Recipe[] = [
     insp: "Kit Kat",
     kind: "craving",
     blurb:
-      "Fingers Thin vanilla wafers are stacked with a little melted dark chocolate, then dipped for a crisp, snappy shell. The finished fingers offer the familiar contrast of brittle wafer layers and chocolate, with a darker, less candy-sweet profile.",
+      "Thin vanilla wafers are stacked with a little melted dark chocolate, then dipped for a crisp, snappy shell. The finished fingers offer the familiar contrast of brittle wafer layers and chocolate, with a darker, less candy-sweet profile.",
     prepMin: 20,
     prepLabel: "20 min",
     totalLabel: "1 hr 20 min",
@@ -540,7 +540,7 @@ export const RECIPES: Recipe[] = [
     insp: "Ben & Jerry's Half Baked",
     kind: "craving",
     blurb:
-      "Yogurt Cocoa-rich Greek yogurt folded with chewy chocolate-chip nuggets and soft brownie bites. The mix-ins are baked through for food safety, giving the familiar cookie-and-brownie contrast in a lighter, tangier frozen-yogurt format.",
+      "Cocoa-rich Greek yogurt folded with chewy chocolate-chip nuggets and soft brownie bites. The mix-ins are baked through for food safety, giving the familiar cookie-and-brownie contrast in a lighter, tangier frozen-yogurt format.",
     prepMin: 30,
     prepLabel: "30 min",
     totalLabel: "~7 hr 20 min",
@@ -675,7 +675,7 @@ export const RECIPES: Recipe[] = [
     insp: "McDonald's Chicken McNuggets",
     kind: "craving",
     blurb:
-      "Nuggets Tender chicken breast pieces in a lightly seasoned whole-wheat crumb coating, baked until golden at the edges. Serve warm, with a measured dipping sauce if you like (not included in nutrition).",
+      "Tender chicken breast pieces in a lightly seasoned whole-wheat crumb coating, baked until golden at the edges. Serve warm, with a measured dipping sauce if you like (not included in nutrition).",
     prepMin: 20,
     prepLabel: "20 min",
     totalLabel: "41–45 min",
@@ -721,7 +721,7 @@ export const RECIPES: Recipe[] = [
     insp: "Frigo Combo Sticks",
     kind: "craving",
     blurb:
-      "Skewers A familiar salty, savory bite with a juicy counterpoint from cherry tomatoes. Thread everything onto skewers for an easy-to-pack snack that is simple to portion and assemble.",
+      "A familiar salty, savory bite with a juicy counterpoint from cherry tomatoes. Thread everything onto skewers for an easy-to-pack snack that is simple to portion and assemble.",
     prepMin: 15,
     prepLabel: "15 min",
     totalLabel: "15 min",
@@ -836,7 +836,7 @@ export const RECIPES: Recipe[] = [
     insp: "Taco Bell Doritos Locos Taco",
     kind: "direct",
     blurb:
-      "Beef A crisp corn shell wears a paprika-red coat of finely grated cheddar, garlic, onion, cumin, and chili. Inside is simply seasoned beef, so the cheese-and-spice flavor stays vivid on the shell.",
+      "A crisp corn shell wears a paprika-red coat of finely grated cheddar, garlic, onion, cumin, and chili. Inside is simply seasoned beef, so the cheese-and-spice flavor stays vivid on the shell.",
     prepMin: 10,
     prepLabel: "10 min",
     totalLabel: "30–35 min",

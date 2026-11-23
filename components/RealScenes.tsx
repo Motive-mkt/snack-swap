@@ -57,7 +57,7 @@ export function RibbonScene() {
       ]}
       steps={[
         { h: "Blended smooth", p: "300 g apple, 250 g strawberries, 150 g blueberries and 10 g lemon juice — no honey, syrup or added sugar. Heated to 160°F (71°C), then cooled 5 minutes." },
-        { h: "Spread thin, dried low", p: "Spread 1/8–1/4 inch (3–6 mm) on lined dehydrator trays and dried at 140°F (60°C) for 6–12 hours, until the centre springs back but still bends." },
+        { h: "Spread thin, dried low", p: "Spread 1/8–1/4 inch (3–6 mm) on lined dehydrator trays and dried at 140°F (60°C) for 6–12 hours, until the center springs back but still bends." },
         { h: "Cooled and cut", p: "Cooled 30 minutes, peeled from the liner and cut with clean scissors into 6 narrow strips, then rolled." },
       ]}
       chips={chips(37)}

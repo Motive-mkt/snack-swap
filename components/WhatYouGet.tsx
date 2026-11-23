@@ -3,7 +3,7 @@ import { SITE, STATS } from "@/data/site";
 const ITEMS = [
   { t: `${STATS.total} craving-led recipes`, d: "Crunchy, sweet, creamy, savory — each one a home-kitchen swap for a snack you already love.", c: "bg-blush" },
   { t: "Gram weights + cup equivalents", d: "Weigh it once and it works every time. US cups and spoons are listed beside every weight.", c: "bg-mint" },
-  { t: "Macros on every recipe", d: "Calories, protein, carbs, fat, fibre and sugar per serving, estimated from USDA FoodData Central.", c: "bg-butter" },
+  { t: "Macros on every recipe", d: "Calories, protein, carbs, fat, fiber and sugar per serving, estimated from USDA FoodData Central.", c: "bg-butter" },
   { t: "Honest prep times", d: "Active hands-on time is listed separately from baking, chilling or drying, so you can plan your evening.", c: "bg-paper-2" },
   { t: "Pantry + grocery guides", d: "What to stock, what to buy and what to skip, so the first shop isn't a guessing game.", c: "bg-mint" },
   { t: "Batch prep + storage", d: "Make once, snack all week, with food-safety temperatures spelled out.", c: "bg-blush" },

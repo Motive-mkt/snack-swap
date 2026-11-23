@@ -6,7 +6,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { dbg } from "@/lib/dbg";
 
-/** x / y are the sticker's centre as % of the stage, w its width as % of the stage width. */
+/** x / y are the sticker's center as % of the stage, w its width as % of the stage width. */
 export type Orbit = { src: string; x: number; y: number; w: number; rot: number; depth: number; front?: boolean };
 export type Step = { h: string; p: string };
 
@@ -24,7 +24,7 @@ type Props = {
   note: string;
   /** tailwind bg class for the round plate behind the photo */
   plate: string;
-  /** three crumb / fleck colours that pop off the photo */
+  /** three crumb / fleck colors that pop off the photo */
   crumbs: [string, string, string];
 };
 
@@ -62,36 +62,38 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
           scrollTrigger: {
             trigger: el.querySelector("[data-pin]"),
             start: "top top+=64",
-            end: () => `+=${Math.round(window.innerHeight * (n * 0.9 + 0.6))}`,
+            end: () => `+=${Math.round(window.innerHeight * (n * 0.5 + 0.7))}`,
             pin: true,
-            scrub: coarse ? 0.4 : 0.8,
+            scrub: coarse ? 0.2 : 0.5,
             anticipatePin: 1,
             invalidateOnRefresh: true,
           },
         });
 
         // backdrop: sunburst spins up and keeps turning, plate pops in
-        tl.fromTo("[data-rays]", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, ease: "power2.out", duration: 0.22 }, 0)
+        tl.fromTo("[data-rays]", { scale: 0.4, opacity: 0 }, { scale: 1, opacity: 1, ease: "power2.out", duration: 0.16 }, 0)
           .to("[data-spin]", { rotate: 80, duration: 1 }, 0)
-          .fromTo("[data-plate]", { scale: 0.2, opacity: 0 }, { scale: 1, opacity: 1, ease: "back.out(1.6)", duration: 0.2 }, 0.02);
+          .fromTo("[data-plate]", { scale: 0.2, opacity: 0 }, { scale: 1, opacity: 1, ease: "back.out(1.6)", duration: 0.16 }, 0.02);
 
         // hero photo
         let landed: number;
         if (mode === "drop") {
-          tl.fromTo("[data-hero]", { yPercent: -150, rotate: -24, scale: 0.75, opacity: 0 }, { yPercent: 0, rotate: -3, scale: 1, opacity: 1, ease: "back.out(1.5)", duration: 0.2 }, 0.04)
-            .to("[data-hero]", { scale: 1.08, rotate: 4, duration: 0.76 }, 0.24);
-          landed = 0.2;
+          tl.fromTo("[data-hero]", { yPercent: -150, rotate: -24, scale: 0.75, opacity: 0 }, { yPercent: 0, rotate: -3, scale: 1, opacity: 1, ease: "back.out(1.5)", duration: 0.16 }, 0.03)
+            .to("[data-hero]", { scale: 1.06, rotate: 4, duration: 0.8 }, 0.2);
+          landed = 0.17;
         } else {
-          tl.fromTo("[data-hero]", { opacity: 0, rotate: -9, scale: 0.9, xPercent: -8 }, { opacity: 1, rotate: -2, scale: 1, xPercent: 0, ease: "power2.out", duration: 0.5 }, 0.04)
-            .fromTo("[data-clip]", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", ease: "power2.out", duration: 0.5 }, 0.04)
-            .fromTo("[data-roll]", { xPercent: 0, opacity: 1 }, { xPercent: 1000, ease: "power2.out", duration: 0.5 }, 0.04)
-            .to("[data-roll]", { opacity: 0, duration: 0.03 }, 0.51)
-            .to("[data-hero]", { scale: 1.07, rotate: 2, duration: 0.46 }, 0.54);
-          landed = 0.5;
+          // the card pops in solid, then the photo unrolls left to right in one short, crisp sweep
+          tl.fromTo("[data-hero]", { rotate: -9, scale: 0.86, xPercent: -10 }, { rotate: -2, scale: 1, xPercent: 0, ease: "back.out(1.4)", duration: 0.14 }, 0.03)
+            .fromTo("[data-hero]", { opacity: 0 }, { opacity: 1, ease: "none", duration: 0.03 }, 0.03)
+            .fromTo("[data-clip]", { clipPath: "inset(0 100% 0 0)" }, { clipPath: "inset(0 0% 0 0)", ease: "power2.out", duration: 0.2 }, 0.1)
+            .fromTo("[data-roll]", { xPercent: 0, opacity: 1 }, { xPercent: 1667, ease: "power2.out", duration: 0.2 }, 0.1)
+            .to("[data-roll]", { opacity: 0, duration: 0.02 }, 0.3)
+            .to("[data-hero]", { scale: 1.04, rotate: 1, duration: 0.64 }, 0.34);
+          landed = 0.28;
         }
 
         // light sweep across the photo
-        tl.fromTo("[data-sheen]", { xPercent: 0 }, { xPercent: 460, ease: "power1.inOut", duration: 0.22 }, mode === "drop" ? 0.3 : 0.58);
+        tl.fromTo("[data-sheen]", { xPercent: 0 }, { xPercent: 460, ease: "power1.inOut", duration: 0.2 }, landed + 0.07);
 
         // crumbs pop off the photo as it lands
         const k = () => stage.clientWidth / 640;
@@ -112,9 +114,9 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
           tl.fromTo(
             o,
             { x: () => ((50 - ox) / 100) * stage.clientWidth, y: () => ((50 - oy) / 100) * stage.clientHeight, scale: 0.25, opacity: 0, rotate: r - 70 },
-            { x: 0, y: 0, scale: 1, opacity: 1, rotate: r, ease: "back.out(1.5)", duration: 0.22 },
-            0.1 + i * 0.045,
-          ).to(o, { yPercent: -12 * d, rotate: r + 9 * d, duration: 0.66 - i * 0.045 }, 0.34 + i * 0.045);
+            { x: 0, y: 0, scale: 1, opacity: 1, rotate: r, ease: "back.out(1.5)", duration: 0.2 },
+            0.07 + i * 0.04,
+          ).to(o, { yPercent: -12 * d, rotate: r + 9 * d, duration: 0.7 - i * 0.04 }, 0.3 + i * 0.04);
         });
 
         // step copy
@@ -131,7 +133,7 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
         });
 
         // macro chips at the end
-        tl.fromTo("[data-chip]", { scale: 0, rotate: -18 }, { scale: 1, rotate: 0, stagger: 0.04, ease: "back.out(2)", duration: 0.1 }, 0.78);
+        tl.fromTo("[data-chip]", { scale: 0, rotate: -18 }, { scale: 1, rotate: 0, stagger: 0.04, ease: "back.out(2)", duration: 0.1 }, 0.72);
         dbg("scene:" + id);
       }, el);
       return () => ctx.revert();
@@ -211,14 +213,14 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
                     <span
                       aria-hidden
                       data-sheen
-                      className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/55 to-transparent motion-reduce:hidden"
+                      className="pointer-events-none absolute inset-y-0 -left-1/2 w-1/2 -skew-x-12 bg-gradient-to-r from-transparent via-white/40 to-transparent motion-reduce:hidden"
                     />
                     {mode === "unroll" && (
                       <span
                         aria-hidden
                         data-roll
-                        className="pointer-events-none absolute inset-y-0 -left-[10%] w-[10%] motion-reduce:hidden"
-                        style={{ background: "linear-gradient(90deg, rgb(30 11 43 / 0.45), rgb(255 255 255 / 0.55) 30%, rgb(176 33 79 / 0.95) 58%, rgb(30 11 43 / 0.55))" }}
+                        className="pointer-events-none absolute inset-y-0 -left-[6%] w-[6%] border-r-2 border-ink motion-reduce:hidden"
+                        style={{ background: "linear-gradient(90deg, #7a1236, #ff8fae 30%, #d62c60 62%, #8f1a41)" }}
                       />
                     )}
                   </div>

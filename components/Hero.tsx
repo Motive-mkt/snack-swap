@@ -9,6 +9,7 @@ import { recipeById, recipeImage } from "@/data/recipes";
 import { SITE, STATS } from "@/data/site";
 import { fmt } from "@/lib/utils";
 import { dbg } from "@/lib/dbg";
+import { SnackRain } from "@/components/SnackRain";
 
 const PREVIEW_IDS = [1, 27, 28] as const;
 const SHORT: Record<number, string> = { 1: "Tortilla Triangles", 27: "Soft-Serve Bowl", 28: "Chicken Nuggets" };
@@ -65,7 +66,9 @@ export function Hero() {
 
   return (
     <section id="top" ref={root} className="relative overflow-x-clip bg-butter">
-      {/* ── headline stage ── */}
+      {/* ── headline stage (snack rain falls behind the copy) ── */}
+      <div className="relative">
+      <SnackRain />
       <div className="wrap relative pb-12 pt-10 md:min-h-[min(82svh,760px)] lg:pt-14">
         <p
           data-hero-fade
@@ -149,6 +152,7 @@ export function Hero() {
           </svg>
           <span className="font-display text-4xl font-extrabold lowercase text-ink lg:text-5xl">bite</span>
         </div>
+      </div>
       </div>
 
       {/* ── copy + preview ── */}
