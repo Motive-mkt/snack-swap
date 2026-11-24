@@ -1,11 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Clock, SearchX } from "lucide-react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { CATEGORIES, RECIPES, recipeImage, type CategoryId, type Recipe } from "@/data/recipes";
 import { STATS } from "@/data/site";
+import { remeasureScroll } from "@/lib/scrollRefresh";
 import { fmt } from "@/lib/utils";
 
 type Quick = "sugar0" | "protein10" | "prep20" | "kcal150";
@@ -114,6 +115,32 @@ export function CravingExplorer() {
   }, [cat, quick]);
 
   const visible = showAll ? matches : matches.slice(0, 6);
+
+  // When this list gets longer or shorter, the pinned scroll scenes further down must measure the page again,
+  // otherwise a scene stays pinned over its old scroll range and floats on top of the cards.
+  const lastView = useRef("");
+  useEffect(() => {
+    const view = `${cat}|${quick.join(",")}|${showAll}`;
+    if (lastView.current && lastView.current !== view) remeasureScroll();
+    lastView.current = view;
+  }, [cat, quick, showAll]);
+
+  const toggleAll = () => {
+    if (showAll) {
+      // collapsing from the bottom of a long list would strand the reader far below this section: bring the top back
+      requestAnimationFrame(() => {
+        const top = document.getElementById("swaps-h");
+        if (!top) return;
+        const y = Math.max(0, top.getBoundingClientRect().top + window.scrollY - 96);
+        try {
+          window.scrollTo({ top: y, behavior: "instant" as ScrollBehavior });
+        } catch {
+          window.scrollTo(0, y);
+        }
+      });
+    }
+    setShowAll((v) => !v);
+  };
   const toggle = (id: Quick) => {
     setShowAll(false);
     setQuick((q) => (q.includes(id) ? q.filter((x) => x !== id) : [...q, id]));
@@ -211,7 +238,7 @@ export function CravingExplorer() {
 
             {matches.length > 6 && (
               <div className="mt-9 flex justify-center">
-                <button type="button" className="btn-ghost" onClick={() => setShowAll((v) => !v)} aria-expanded={showAll}>
+                <button type="button" className="btn-ghost" onClick={toggleAll} aria-expanded={showAll}>
                   {showAll ? "Show fewer swaps" : `Show all matching swaps (${matches.length})`}
                 </button>
               </div>

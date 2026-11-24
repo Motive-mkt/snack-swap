@@ -55,7 +55,7 @@ export function CheckoutSection() {
               You will pay on Whop&apos;s secure checkout, then open your PDF from your Whop library. Use the same email to sign in.
             </p>
             <a href={CHECKOUT_URL} className="btn-primary mt-6 w-full !min-h-14 text-center">
-              Get the Snack Swap Playbook
+              get your snack swap
             </a>
 
             <p className="mt-6 flex items-start gap-2 text-[0.82rem] font-medium text-ink-2">

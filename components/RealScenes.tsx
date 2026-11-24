@@ -47,7 +47,7 @@ export function RibbonScene() {
       eyebrow="Recipe 37 · Fruit-forward sweet snacks"
       title="four whole fruits, one flexible ribbon"
       mode="unroll"
-      hero={{ src: "/recipes/37.webp", alt: "Homemade fruit roll-up strips from Recipe 37", h: 76, ratio: 1.5 }}
+      hero={{ src: "/recipes/37.webp", alt: "Homemade fruit roll-up strips from Recipe 37", h: 72, ratio: 1.25 }}
       orbit={[
         { src: "/cut/27.webp", x: 14, y: 26, w: 27, rot: -8, depth: 1.2 },
         { src: "/cut/15.webp", x: 86, y: 26, w: 21, rot: 9, depth: 0.9 },

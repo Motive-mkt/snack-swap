@@ -153,7 +153,7 @@ export function PhotoScene({ id, bg, eyebrow, title, steps, hero, mode, orbit, c
 
   return (
     <section ref={root} id={id} aria-labelledby={`${id}-h`} className={`relative ${bg}`}>
-      <div data-pin className="relative flex min-h-[calc(100svh-64px)] flex-col overflow-hidden">
+      <div data-pin className={`relative flex min-h-[calc(100svh-64px)] flex-col overflow-hidden ${bg}`}>
         <div className="wrap pt-6 lg:pt-10">
           <p className="eyebrow">{eyebrow}</p>
           <h2 id={`${id}-h`} data-nosplit className="mt-2 text-[clamp(2rem,5.2vw,4rem)]">{title}</h2>
