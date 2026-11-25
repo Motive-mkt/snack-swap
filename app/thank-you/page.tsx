@@ -6,6 +6,7 @@ import { ResendForm } from "@/components/ResendForm";
 import { downloadUrlFor } from "@/lib/email";
 import { whopAccessUrl, whopMode } from "@/lib/env";
 import { orders } from "@/lib/orders";
+import { safeErr } from "@/lib/safe";
 import { whop } from "@/lib/whop";
 
 export const metadata: Metadata = { title: "Thank you — Snack Swap Playbook", robots: { index: false } };
@@ -33,7 +34,7 @@ async function resolveOrder(orderId: string, paymentId?: string) {
       }
       if (pay.status === "void" || pay.status === "uncollectible") return { order, failed: true };
     } catch (e) {
-      console.error("[thank-you] payment lookup failed", e);
+      console.error("[thank-you] payment lookup failed", safeErr(e));
     }
   }
   return { order, failed: false };

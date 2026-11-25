@@ -4,6 +4,7 @@ import { unwrapWebhook } from "@whop/sdk/helpers";
 import { sendDeliveryEmail } from "@/lib/email";
 import { whopMode } from "@/lib/env";
 import { orders } from "@/lib/orders";
+import { safeErr } from "@/lib/safe";
 
 export const runtime = "nodejs";
 export const maxDuration = 10; // Whop expects a 2xx within 5 seconds
@@ -64,7 +65,7 @@ export async function POST(req: Request) {
     }
     return NextResponse.json({ ok: true });
   } catch (err) {
-    console.error("[whop webhook] failed", err);
+    console.error("[whop webhook] failed", safeErr(err));
     if (whId) await store.forget(`wh:${whId}`); // let Whop's retry run again
     return new NextResponse("Processing error", { status: 500 });
   }

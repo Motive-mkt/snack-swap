@@ -8,7 +8,6 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { recipeById, recipeImage } from "@/data/recipes";
 import { SITE, STATS } from "@/data/site";
 import { fmt } from "@/lib/utils";
-import { dbg } from "@/lib/dbg";
 import { SnackRain } from "@/components/SnackRain";
 
 const PREVIEW_IDS = [1, 27, 28] as const;
@@ -35,7 +34,6 @@ export function Hero() {
           .from("[data-hero-sticker]", { scale: 0.2, rotate: 0, opacity: 0, duration: 0.9, stagger: 0.1, ease: "back.out(1.6)" }, 0.45)
           .from("[data-hero-badge]", { scale: 0, rotate: -120, duration: 1, ease: "back.out(1.4)" }, 0.8)
           .from("[data-hero-fade]", { y: 24, opacity: 0, duration: 0.8, stagger: 0.08 }, 0.9);
-        dbg("hero:ready");
 
         // pointer-follow drift on the stickers (fine pointers only)
         if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {

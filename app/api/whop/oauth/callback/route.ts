@@ -1,9 +1,11 @@
 import { NextRequest, NextResponse } from "next/server";
 import { appUrl, required } from "@/lib/env";
-import { SUPPORT_COOKIE, sealSession } from "@/lib/session";
+import { clearCookie, cookieOpts } from "@/lib/cookies";
+import { oauthBase, oauthCookie } from "@/lib/oauth";
+import { safeEqual, safeErr } from "@/lib/safe";
+import { sealSession, supportCookie } from "@/lib/session";
 import { verifyToken } from "@/lib/tokens";
 import { whop } from "@/lib/whop";
-import { OAUTH_COOKIE, oauthBase } from "@/lib/oauth";
 
 export const runtime = "nodejs";
 
@@ -13,9 +15,9 @@ export async function GET(req: NextRequest) {
   const sp = req.nextUrl.searchParams;
   if (sp.get("error")) return back("support=error");
 
-  const saved = verifyToken<{ state: string; verifier: string }>(req.cookies.get(OAUTH_COOKIE)?.value);
+  const saved = verifyToken<{ state: string; verifier: string }>("oauth-support", req.cookies.get(oauthCookie())?.value);
   const code = sp.get("code");
-  if (!saved || !code || sp.get("state") !== saved.state) return back("support=error");
+  if (!saved || !code || !safeEqual(sp.get("state") ?? "", saved.state)) return back("support=error");
 
   try {
     // 1) exchange the code (PKCE public client)
@@ -42,17 +44,11 @@ export async function GET(req: NextRequest) {
     const channel = await whop().supportChannels.create({ account_id: required("WHOP_ACCOUNT_ID"), user_id: info.sub });
 
     const res = back("support=open");
-    res.cookies.set(SUPPORT_COOKIE, sealSession({ userId: info.sub, channelId: channel.id, accessToken: access_token, name: info.name }), {
-      httpOnly: true,
-      secure: appUrl().startsWith("https"),
-      sameSite: "lax",
-      path: "/",
-      maxAge: 3300, // access tokens last 1 hour
-    });
-    res.cookies.delete(OAUTH_COOKIE);
+    res.cookies.set(supportCookie(), sealSession({ userId: info.sub, channelId: channel.id, accessToken: access_token, name: info.name }), cookieOpts("/", 3300)); // access tokens last 1 hour
+    clearCookie(res, oauthCookie(), "/api/whop/oauth");
     return res;
   } catch (err) {
-    console.error("[whop oauth] callback failed", err);
+    console.error("[whop oauth] callback failed", safeErr(err));
     return back("support=error");
   }
 }

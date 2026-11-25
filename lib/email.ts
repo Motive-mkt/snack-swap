@@ -1,10 +1,10 @@
 import { appUrl, whopAccessUrl } from "./env";
-import { signToken } from "./tokens";
+import { DOWNLOAD_TTL_SECONDS, signToken } from "./tokens";
 
 const esc = (s: string) => s.replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]!));
 
 export function downloadUrlFor(orderId: string) {
-  return `${appUrl()}/api/download?token=${encodeURIComponent(signToken({ orderId }))}`;
+  return `${appUrl()}/api/download?token=${encodeURIComponent(signToken("download", { orderId }, DOWNLOAD_TTL_SECONDS))}`;
 }
 
 /**
@@ -38,7 +38,9 @@ export async function sendDeliveryEmail(to: string, orderId: string): Promise<vo
 
   const key = process.env.RESEND_API_KEY;
   if (!key) {
-    console.log(`[email:dev] To ${to} — download link: ${link}`);
+    // A download link is a key to the PDF: it may only be printed on a developer machine, never into production logs.
+    if (process.env.NODE_ENV !== "production") console.log(`[email:dev] To ${to} — download link: ${link}`);
+    else console.warn("[email] RESEND_API_KEY is not set, so no email was sent");
     return;
   }
   const res = await fetch("https://api.resend.com/emails", {

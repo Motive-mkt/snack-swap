@@ -6,7 +6,6 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
 import Lenis from "lenis";
 import "lenis/dist/lenis.css";
-import { dbg } from "@/lib/dbg";
 import { watchPageHeight } from "@/lib/scrollRefresh";
 
 /**
@@ -17,18 +16,14 @@ import { watchPageHeight } from "@/lib/scrollRefresh";
  */
 export function SmoothMotion() {
   useEffect(() => {
-    dbg("motion:effect");
     gsap.registerPlugin(ScrollTrigger, SplitText);
     const mm = gsap.matchMedia();
 
     // Touch devices keep native scrolling: lighter, steadier, and no JS-driven scroll on low-memory phones.
     const fine = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
     ScrollTrigger.config({ ignoreMobileResize: true });
-    const onRefresh = () => dbg("st:refresh", ScrollTrigger.getAll().length);
-    ScrollTrigger.addEventListener("refresh", onRefresh);
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
-      dbg("motion:mm", fine ? "fine" : "touch");
       let lenis: Lenis | null = null;
       let tick: ((t: number) => void) | null = null;
       if (fine) {
@@ -80,7 +75,6 @@ export function SmoothMotion() {
         );
       });
 
-      dbg("motion:parallax-ready", splits.length);
       const cleanups: Array<() => void> = [];
 
       // if the page height changes for any reason, the pinned scenes measure again once things settle
@@ -131,7 +125,6 @@ export function SmoothMotion() {
         });
       }
 
-      dbg("motion:ready");
       return () => {
         cleanups.forEach((c) => c());
         splits.forEach((s) => s.revert());
@@ -141,7 +134,6 @@ export function SmoothMotion() {
     });
 
     return () => {
-      ScrollTrigger.removeEventListener("refresh", onRefresh);
       mm.revert();
     };
   }, []);
